@@ -2,6 +2,7 @@
 using Proto.Schedulers.SimpleScheduler;
 using Sherlock.Client;
 using Sherlock.Messages;
+using Sherlock.ProtoActor.Messages;
 
 namespace Sherlock.DemoApp.Engine
 {
@@ -22,7 +23,7 @@ namespace Sherlock.DemoApp.Engine
 
             _sherlock.Tell(new AddToInspection()
             {
-                Actor = _root
+                ActorId = _root
             });
         }
 

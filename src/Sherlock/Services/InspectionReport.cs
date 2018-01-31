@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Proto;
 using Sherlock.Support;
 
 namespace Sherlock.Services
@@ -16,15 +16,15 @@ namespace Sherlock.Services
     
     public partial class InspectionReport : IInspectionReport
     {
-        public static InspectionReport Create(IContext context)
+        public static InspectionReport Create(string actorId, IEnumerable<string> childs)
         {
             var report = new InspectionReport
             {
-                ActorId = context.Self.ToShortString(),
+                ActorId = actorId,
                 MillisFromEpoch = DateTime.UtcNow.ToEpochMillis()
             };
 
-            report.Childs.AddRange(context.Children.Select(x=>x.ToShortString()));
+            report.Childs.AddRange(childs);
 
             return report;
         }

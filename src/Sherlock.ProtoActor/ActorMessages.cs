@@ -8,6 +8,7 @@ using Proto;
 using Proto.Schedulers.SimpleScheduler;
 using Sherlock.Client;
 using Sherlock.Messages;
+using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 using Sherlock.Support;
 
@@ -42,7 +43,7 @@ namespace Sherlock.ProtoActor
 
             var actorId = context.Self.ToShortString();
             var q = Messages.GetOrAdd(actorId, new FixedLenQueueEx<TrackedMessage>(QueueLen));
-            return q.Add(i => new TrackedMessage(actorId, i, context.Message, context.Sender, null, TrackedMessage.Types.Direction.In));
+            return q.Add(i => new TrackedMessage(actorId, i, context.Message, context.Sender?.ToShortString(), null, TrackedMessage.Types.Direction.In));
         }
 
         public static IEnumerable<TrackedMessage> MessagesOf(string actorId)
@@ -61,7 +62,7 @@ namespace Sherlock.ProtoActor
             {
                 var key = context.Self.ToShortString();
                 var q = Messages.GetOrAdd(key, new FixedLenQueueEx<TrackedMessage>(QueueLen));
-                return q.Add(i => new TrackedMessage(key, i, messageEnvelope.Message, context.Sender, target, TrackedMessage.Types.Direction.Out));
+                return q.Add(i => new TrackedMessage(key, i, messageEnvelope.Message, context.Sender?.ToShortString(), target?.ToShortString(), TrackedMessage.Types.Direction.Out));
             }
 
             return null;

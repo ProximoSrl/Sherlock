@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Proto;
 using Serilog.Context;
 using Sherlock.Messages;
+using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 using Sherlock.Support;
 
@@ -159,7 +160,7 @@ namespace Sherlock.ProtoActor
             }
 
             var report = InspectionReport
-                .Create(context)
+                .Create(context.Self.ToShortString(), context.Children.Select(x=>x.ToShortString()))
                 .Add("kernel::name", __name)
                 .Add("kernel::actorType", GetType().FullName)
                 .Add("kernel::status", __currentStatus)

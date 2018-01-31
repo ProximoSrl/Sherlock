@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Proto;
-using Sherlock.Messages;
+using Sherlock.Engine.Messages;
 using Sherlock.Services;
+using LogsAndMessagesData = Sherlock.Messages.LogsAndMessagesData;
+using QueryLogsAndMessages = Sherlock.Messages.QueryLogsAndMessages;
 
 namespace Sherlock.Engine.Data
 {
@@ -40,7 +42,7 @@ namespace Sherlock.Engine.Data
                     break;
                 }
 
-                case InspectionReportRequest req:
+                case QueryReports req:
                 {
                     context.Tell(context.Sender, _map);
                     break;

@@ -9,6 +9,7 @@ using Proto;
 using Proto.Schedulers.SimpleScheduler;
 using Sherlock.Client;
 using Sherlock.Messages;
+using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 
 namespace Sherlock.ProtoActor
@@ -54,7 +55,7 @@ namespace Sherlock.ProtoActor
 
                 case AddToInspection add:
                 {
-                    _targets.Add(add.Actor);
+                    _targets.Add(add.ActorId);
                     break;
                 }
 

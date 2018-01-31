@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Proto;
-using Sherlock.Messages;
+using Sherlock.Engine.Messages;
 using Sherlock.Services;
+using LogsAndMessagesData = Sherlock.Messages.LogsAndMessagesData;
+using QueryLogsAndMessages = Sherlock.Messages.QueryLogsAndMessages;
 
 namespace Sherlock.Engine.Data
 {
@@ -61,7 +63,7 @@ namespace Sherlock.Engine.Data
         {
             if (clientId != null && _roots.TryGetValue(clientId, out var node))
             {
-                return await node.RequestAsync<InspectionReportMap>(new InspectionReportRequest()).ConfigureAwait(false);
+                return await node.RequestAsync<InspectionReportMap>(new QueryReports()).ConfigureAwait(false);
             }
 
             var report = new InspectionReportMap();
