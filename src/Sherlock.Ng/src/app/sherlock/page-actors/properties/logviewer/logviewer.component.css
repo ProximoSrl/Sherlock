@@ -1,0 +1,92 @@
+h5 {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  margin-top: 10px;
+  float: left;
+}
+
+.header{
+  border-bottom: 1pt solid lightgray;
+}
+
+.header::after{
+  display: block;
+  clear: both;
+  content: " ";
+}
+
+.control {
+  padding: 8px;
+  margin-top: 10px;
+}
+
+ul{
+  padding: 0px;
+  font-size: x-small;
+  font-family: monospace;
+}
+
+li{
+  list-style: none;
+}
+
+ul.levels {
+  float: right;
+}
+
+ul.levels > li{
+  float: left;
+  margin-right: 8px;
+}
+
+ul.levels > li::after{
+  color:darkgray;
+  content: "::";
+}
+
+ul.levels > li:last-child::after{
+  color:darkgray;
+  content: "";
+}
+
+ul.levels::after{
+  display: block;
+  clear: both;
+  content: " ";
+}
+
+ul.logs {
+  max-height: 500px;
+  overflow: auto;
+}
+
+ul.logs > li {
+  margin:2px;
+  padding: 2px;
+}
+
+ul.logs > li:nth-child(odd){
+  background-color: aliceblue;
+}
+
+li.Error {
+  color: red;
+  font-weight: bolder;
+}
+
+li.Information {
+  color: navy;
+}
+
+li.Debug {
+  color: lightslategray;
+}
+
+li.Warning {
+  color: orangered;
+  font-weight: bold;
+}
+
+li.Verbose {
+  color: magenta;
+}

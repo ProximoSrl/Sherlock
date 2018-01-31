@@ -1,0 +1,45 @@
+.box{
+    margin-top: 4px;
+    width: 100%;
+    border: 1px solid darkgray;
+}
+
+.kv{
+    font-size: small;
+    float: left;
+    border-bottom: 1px solid darkgray;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+.kv > div{
+    float: left;
+}
+
+.box::after, .kv::after{
+    clear:both;
+    content: " ";
+    display: block;
+}
+
+.key, .value{
+    padding: 2px;
+}
+
+.key{
+    width: 50%;
+    background-color: lightgray;
+    color:black;
+}
+
+h5{
+    border-bottom: 1pt solid lightgray;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 6px;
+}
+
+.control{
+    padding:8px;
+    margin-bottom: 10px;
+}

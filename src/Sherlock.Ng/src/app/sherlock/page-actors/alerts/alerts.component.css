@@ -1,0 +1,24 @@
+ul{
+    padding-left: 0px;
+    list-style: none;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+h5{
+    border-bottom: 1pt solid lightgray;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 6px;
+}
+
+li{
+    background-color: orangered;
+    color: white;
+    padding: 4px;
+}
+
+.control {
+    padding: 8px;
+    margin-bottom: 10px;
+}

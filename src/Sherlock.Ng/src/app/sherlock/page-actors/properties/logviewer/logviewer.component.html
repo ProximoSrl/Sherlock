@@ -1,0 +1,15 @@
+<div class="control mat-elevation-z4" *ngIf="logs?.length > 0">
+  <div class="header">
+    <h5>Logs</h5>
+    <ul class="levels">
+      <li *ngFor="let l of levels" class="{{l}}">
+        {{l}}
+      </li>
+    </ul>
+  </div>
+  <ul class="logs">
+    <li *ngFor="let l of logs" [class]="l.level">
+       [ {{l.sequence | paddedNumber:5}} - {{l.timestamp | timestamp :'yyyy/MM/dd HH:mm:ss.SSS'}} {{l.logger}}] {{l.message}}
+    </li>
+  </ul>
+</div>

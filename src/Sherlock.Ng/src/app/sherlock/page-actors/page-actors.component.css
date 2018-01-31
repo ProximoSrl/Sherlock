@@ -1,0 +1,17 @@
+.left{
+  float:left;
+  width:49%;
+  padding:4px;
+}
+
+.right{
+  float:left;
+  width:50%;
+  padding:4px;
+}
+
+.right::after{
+  display: block;
+  clear: both;
+  content: " ";
+}

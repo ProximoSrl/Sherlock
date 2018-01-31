@@ -1,0 +1,9 @@
+<div class="control mat-elevation-z4" *ngIf="properties.length > 0" >
+    <h5>State</h5>
+    <div class="box">
+        <div *ngFor="let p of properties" class="kv">
+            <div class="key">{{p.key}}</div>
+            <div class="value">{{p.value}}</div>
+        </div>
+    </div>
+</div>

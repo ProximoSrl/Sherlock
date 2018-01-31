@@ -1,0 +1,90 @@
+syntax="proto3";
+
+import "timestamp.proto";
+import "protos.proto";
+
+option csharp_namespace = "Sherlock.Services";
+package Sherlock;
+
+/*
+ * Log tracking
+ */
+message LogMessage {
+    enum LogType {
+        Verbose = 0;
+        Debug = 1;
+		Information = 2;
+        Warning = 3;
+        Error = 4;
+        Fatal = 5;
+    }
+    
+    google.protobuf.Timestamp timestamp = 1;
+    LogType log_type = 2;
+    int64 message_num = 3;
+    string logger = 4;
+    string actor_id = 5;
+    string text = 6;
+    string exception_type = 7;
+}
+
+message LogBatch {
+    repeated LogMessage messages = 1;
+}
+
+message TrackLogsResponse {
+}
+
+/*
+ * Messages tracking
+ */
+message TrackedMessage
+{
+	enum Direction{
+		Undefined = 0;
+		In = 1;
+		Out = 2;
+	}
+
+	uint32 position = 1;
+	int64  millis_from_epoch = 2;
+	actor.PID sender = 3;
+	actor.PID target = 4;
+	Direction direction = 5;
+	map<string, string> message = 6;
+	string actor_id = 7;
+}
+
+message MessagesBatch {
+	repeated TrackedMessage messages = 1;
+}
+
+message TrackMessagesResponse {
+}
+
+/*
+ * Inspection
+ */
+message InspectionReport
+{
+	actor.PID pid = 1;
+	int64  millis_from_epoch = 2;
+	map<string, string> status = 3;
+	repeated actor.PID childs = 4;
+	repeated string warnings = 5;
+}
+
+message TrackInspectionResponse 
+{
+}
+
+message InspectionReportMap
+{
+    map<string, InspectionReport> reports = 1;
+}
+
+service SherlockService {
+    rpc TrackLogs (stream LogBatch) returns (TrackLogsResponse);
+    rpc TrackMessages (stream MessagesBatch) returns (TrackMessagesResponse);
+    rpc TrackInspection (stream InspectionReport) returns (TrackInspectionResponse);
+}

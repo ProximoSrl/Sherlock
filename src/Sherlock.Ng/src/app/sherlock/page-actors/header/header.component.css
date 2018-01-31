@@ -1,0 +1,54 @@
+h5 {
+  margin-top: 0px;
+  margin-bottom: 6px;
+  color: gray;
+  font-weight: normal;
+}
+
+
+h2 {
+  margin-bottom: 2px;
+}
+
+.box {
+  padding: 4px 2px;
+  text-align: center;
+  font-size: small;
+}
+
+.status {
+  background-color: black;
+  width: 20%;
+  color: white;
+}
+
+.uptime {
+  background-color: lightgray;
+  width: 38%;
+  color: black;
+}
+
+.ts {
+  background-color: coral;
+  width: 38%;
+}
+
+.status.Started {
+  background-color: green;
+}
+
+.status.Stopped {
+  background-color: darkred;
+}
+
+.statusbar {
+  display: flex;
+}
+
+.statusbar > div {
+  flex-grow: 1;
+}
+
+.header {
+  padding: 8px;
+}

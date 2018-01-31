@@ -1,0 +1,17 @@
+<div class="header mat-elevation-z4">
+  <div class="title">
+    <h2>{{kernel.name}}</h2>
+    <h5>{{kernel.namespace}} | {{node?.id}}</h5>
+  </div>
+  <div class="statusbar">
+    <div [class]="'status box ' + kernel.status">
+      {{kernel.status}}
+    </div>
+    <div class="uptime box">
+      UP {{kernel.uptime}}
+    </div>
+    <div class="ts box">
+      TS {{node?.timestamp | date :'yyyy/MM/dd HH:mm:ss'}}
+    </div>
+  </div>
+</div>

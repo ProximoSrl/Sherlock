@@ -1,0 +1,71 @@
+<div class="control mat-elevation-z4">
+  <h5>Messages</h5>
+  <div class="example-container">
+    <div class="example-header">
+      <mat-form-field floatPlaceholder="never" class="searchbox">
+        <input matInput #filter placeholder="Filter messages">
+      </mat-form-field>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource">
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="messagePosition">
+        <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.sequence | paddedNumber}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="messageDirection">
+        <mat-header-cell *matHeaderCellDef> In/Out </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span [ngClass]="{'sender': row.direction === 'In','target': row.direction === 'Out'}">{{row.direction}}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="messageTarget">
+        <mat-header-cell *matHeaderCellDef>
+          <span class="sender">Sender</span> /
+          <span class="target">Target</span>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="sender">{{row.sender}}</span>
+          <span class="target">{{row.target}}</span>
+        </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="messageType">
+        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-cell *matCellDef="let row" (click)="toggle(row)">
+          {{row.type}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="messageDetail">
+        <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span>{{row.type}}</span>
+          <pre>{{row.message}}</pre>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="executionTimeMs">
+        <mat-header-cell *matHeaderCellDef> ms </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.executionTimeMs}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="timestamp">
+        <mat-header-cell *matHeaderCellDef> When </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.when | date:'yyyy/MM/dd HH:mm:ss:SSS'}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: ['messagePosition', 'messageDirection', 'messageDetail']; when: displayDetail;" (click)="toggle(row)"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator [length]="exampleDatabase.data.length" [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+  </div>
+</div>

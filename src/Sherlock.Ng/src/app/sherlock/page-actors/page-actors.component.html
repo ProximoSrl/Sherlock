@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="left">
+    <app-header [node]="selected"></app-header>
+    <app-actorstree [nodes]="nodes" (selected)="nodeSelected($event)"></app-actorstree>
+  </div>
+  <div class="right">
+    <app-properties [node]="selected"></app-properties>
+  </div>
+</div>

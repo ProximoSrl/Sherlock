@@ -1,0 +1,82 @@
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+}
+
+.example-header {
+    max-height: 50px;
+    font-size: small;
+}
+
+.searchbox {
+    width: 100%;
+}
+
+.mat-header-row,
+.mat-row {
+    min-height: 24px;
+    padding: 0px;
+}
+
+.mat-cell {
+    font-size: x-small;
+}
+
+.mat-column-messagePosition {
+    max-width: 40px;
+    text-align: right;
+    padding-right: 4px;
+}
+
+.mat-column-messageDirection {
+    max-width: 40px;
+}
+
+.mat-column-messageTarget {
+    max-width: 200px;
+}
+
+.mat-column-timestamp {
+    max-width: 150px;
+}
+
+.mat-column-messageDetail {
+    background-color: lightgoldenrodyellow;
+    padding-top: 6px;
+}
+
+.mat-column-executionTimeMs {
+    max-width: 50px;
+    text-align: right;
+}
+
+.mat-row {
+    cursor: pointer;
+    font-family: monospace;
+}
+
+h5 {
+    border-bottom: 1pt solid lightgray;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    margin-top: 10px;
+}
+
+.control {
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+span.sender {
+    color: green;
+}
+
+span.target {
+    color: navy;
+}
