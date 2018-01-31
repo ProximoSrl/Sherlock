@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Proto;
 using Sherlock.Support;
 
@@ -19,11 +20,11 @@ namespace Sherlock.Services
         {
             var report = new InspectionReport
             {
-                Pid = context.Self,
+                ActorId = context.Self.ToShortString(),
                 MillisFromEpoch = DateTime.UtcNow.ToEpochMillis()
             };
 
-            report.Childs.AddRange(context.Children);
+            report.Childs.AddRange(context.Children.Select(x=>x.ToShortString()));
 
             return report;
         }

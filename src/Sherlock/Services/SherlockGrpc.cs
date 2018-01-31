@@ -13,12 +13,21 @@ namespace Sherlock.Services {
   {
     static readonly string __ServiceName = "Sherlock.SherlockService";
 
+    static readonly grpc::Marshaller<global::Sherlock.Services.ClearRequest> __Marshaller_ClearRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.ClearRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Sherlock.Services.ClearResponse> __Marshaller_ClearResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.ClearResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.LogBatch> __Marshaller_LogBatch = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.LogBatch.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.TrackLogsResponse> __Marshaller_TrackLogsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackLogsResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.MessagesBatch> __Marshaller_MessagesBatch = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.MessagesBatch.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.TrackMessagesResponse> __Marshaller_TrackMessagesResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackMessagesResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.InspectionReport> __Marshaller_InspectionReport = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.InspectionReport.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.TrackInspectionResponse> __Marshaller_TrackInspectionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackInspectionResponse.Parser.ParseFrom);
+
+    static readonly grpc::Method<global::Sherlock.Services.ClearRequest, global::Sherlock.Services.ClearResponse> __Method_Clear = new grpc::Method<global::Sherlock.Services.ClearRequest, global::Sherlock.Services.ClearResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Clear",
+        __Marshaller_ClearRequest,
+        __Marshaller_ClearResponse);
 
     static readonly grpc::Method<global::Sherlock.Services.LogBatch, global::Sherlock.Services.TrackLogsResponse> __Method_TrackLogs = new grpc::Method<global::Sherlock.Services.LogBatch, global::Sherlock.Services.TrackLogsResponse>(
         grpc::MethodType.ClientStreaming,
@@ -50,6 +59,11 @@ namespace Sherlock.Services {
     /// <summary>Base class for server-side implementations of SherlockService</summary>
     public abstract partial class SherlockServiceBase
     {
+      public virtual global::System.Threading.Tasks.Task<global::Sherlock.Services.ClearResponse> Clear(global::Sherlock.Services.ClearRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       public virtual global::System.Threading.Tasks.Task<global::Sherlock.Services.TrackLogsResponse> TrackLogs(grpc::IAsyncStreamReader<global::Sherlock.Services.LogBatch> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -90,6 +104,22 @@ namespace Sherlock.Services {
       {
       }
 
+      public virtual global::Sherlock.Services.ClearResponse Clear(global::Sherlock.Services.ClearRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return Clear(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Sherlock.Services.ClearResponse Clear(global::Sherlock.Services.ClearRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Clear, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Sherlock.Services.ClearResponse> ClearAsync(global::Sherlock.Services.ClearRequest request, grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      {
+        return ClearAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Sherlock.Services.ClearResponse> ClearAsync(global::Sherlock.Services.ClearRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Clear, null, options, request);
+      }
       public virtual grpc::AsyncClientStreamingCall<global::Sherlock.Services.LogBatch, global::Sherlock.Services.TrackLogsResponse> TrackLogs(grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
         return TrackLogs(new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -126,6 +156,7 @@ namespace Sherlock.Services {
     public static grpc::ServerServiceDefinition BindService(SherlockServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
+          .AddMethod(__Method_Clear, serviceImpl.Clear)
           .AddMethod(__Method_TrackLogs, serviceImpl.TrackLogs)
           .AddMethod(__Method_TrackMessages, serviceImpl.TrackMessages)
           .AddMethod(__Method_TrackInspection, serviceImpl.TrackInspection).Build();

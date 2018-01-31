@@ -25,7 +25,7 @@ namespace Sherlock.Host.Models
 
         public Node(string id, bool recursive)
         {
-            Id = id.ToLowerInvariant();
+            Id = id;
             Status = new Dictionary<string, string>();
             TrackedMessages = new List<IDictionary<string, string>>();
             Timestamp = DateTime.Now;
@@ -37,7 +37,7 @@ namespace Sherlock.Host.Models
             }
         }
 
-        public Node(InspectionReport report, bool recursive) : this(report.Pid.ToShortString(), recursive)
+        public Node(InspectionReport report, bool recursive) : this(report.ActorId, recursive)
         {
             Timestamp = UnixEpoch.AddMilliseconds(report.MillisFromEpoch).ToLocalTime();
 

@@ -12,6 +12,7 @@ namespace Sherlock.Client
         Task<TrackLogsResponse> PushAsync(IEnumerable<LogMessage> logs);
         Task<TrackMessagesResponse> PushAsync(IEnumerable<TrackedMessage> messages);
         Task<TrackInspectionResponse> PushAsync(IEnumerable<InspectionReport> reports);
+        void Clear();
     }
 
     public static class SherlockConstants
@@ -93,6 +94,11 @@ namespace Sherlock.Client
         public void Dispose()
         {
             _channel.ShutdownAsync().Wait();
+        }
+
+        public void Clear()
+        {
+            _sherlockClient.Clear(new ClearRequest(), _clientId);
         }
     }
 }

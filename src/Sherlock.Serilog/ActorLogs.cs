@@ -22,7 +22,7 @@ namespace Sherlock.Serilog
         {
             if (logEvent.Properties.TryGetValue("ActorId", out LogEventPropertyValue v))
             {
-                var key = ((ScalarValue)v).Value.ToString().ToLowerInvariant();
+                var key = ((ScalarValue)v).Value.ToString();
                 var q = Messages.GetOrAdd(key, new FixedLenQueueEx<TrackedLog>(QueueLen));
                 var message = logEvent.RenderMessage(formatProvider);
                 q.Add(i=> new TrackedLog(
@@ -37,8 +37,7 @@ namespace Sherlock.Serilog
 
         public static IEnumerable<TrackedLog> LogsOf(string actorId)
         {
-            var id = actorId.ToLowerInvariant();
-            if (Messages.TryGetValue(id, out FixedLenQueueEx<TrackedLog> messages))
+            if (Messages.TryGetValue(actorId, out FixedLenQueueEx<TrackedLog> messages))
             {
                 return messages.Reverse();
             }

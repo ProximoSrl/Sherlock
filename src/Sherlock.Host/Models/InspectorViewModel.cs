@@ -19,7 +19,7 @@ namespace Sherlock.Host.Models
             Action<Node> action = null
         )
         {
-            _root = new Node("Actors", recursive);
+            _root = new Node("actors", recursive);
 
             foreach (var report in map.Reports)
             {
@@ -56,8 +56,6 @@ namespace Sherlock.Host.Models
         {
             if (!string.IsNullOrEmpty(path))
             {
-                path = path.ToLowerInvariant();
-
                 if (_map.ContainsKey(path))
                 {
                     return _map[path];

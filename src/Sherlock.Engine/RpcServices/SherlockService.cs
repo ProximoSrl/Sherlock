@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Grpc.Core;
@@ -9,7 +6,7 @@ using Sherlock.Client;
 using Sherlock.Engine.Data;
 using Sherlock.Services;
 
-namespace Sherlock.Engine.Logs
+namespace Sherlock.Engine.RpcServices
 {
     public class SherlockService : Services.SherlockService.SherlockServiceBase
     {
@@ -59,6 +56,14 @@ namespace Sherlock.Engine.Logs
             }
 
             return new TrackInspectionResponse();
+        }
+
+        public override Task<ClearResponse> Clear(ClearRequest request, ServerCallContext context)
+        {
+            var clientId = context.RequestHeaders.FirstOrDefault(x => x.Key == SherlockConstants.ClientId)?.Value;
+
+            _engine.Clear(clientId);
+            return Task.FromResult(new ClearResponse());
         }
     }
 }
