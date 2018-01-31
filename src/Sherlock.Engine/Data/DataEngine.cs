@@ -68,7 +68,7 @@ namespace Sherlock.Engine.Data
 
             var inspectionReport = new InspectionReport
             {
-                Pid = new PID("nonhost", clientId ?? "Demo")
+                ActorId = "demoapp/demo"
             };
 
             inspectionReport.Status.Add("kernel::name", "Name");

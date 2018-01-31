@@ -14,23 +14,28 @@ namespace Sherlock.Services
             Formatting = Formatting.Indented
         };
 
-        public TrackedMessage(UInt32 position, object message, PID sender, Types.Direction direction)
+        public TrackedMessage(string actorId, UInt32 position, object message, PID sender, PID target, Types.Direction direction)
         {
             millisFromEpoch_ = DateTime.UtcNow.ToEpochMillis();
+            ActorId = actorId;
             Position = position;
-            Sender = sender;
             Direction = direction;
             Message.Add("sequence", Position.ToString());
 
+            if (sender != null)
+            {
+                Sender = sender.ToShortString();
+                Message.Add("sender", Sender);
+            }
+
+            if (target != null)
+            {
+                Target = target.ToShortString();
+                Message.Add("target", Target);
+            }
+
             switch (message)
             {
-                //case IChunk chunk:
-                //{
-                //    Message.Add("type",
-                //        $"{chunk.Payload?.GetType()} @{chunk.Position}: {chunk.PartitionId} # {chunk.Index}");
-                //    break;
-                //}
-
                 case Terminated terminated:
                 {
                     Message.Add("type", $"{message.GetType().FullName} => {terminated.Who.ToShortString()}");
@@ -45,11 +50,6 @@ namespace Sherlock.Services
             }
 
             Message.Add("when", EpochUtils.FromMillis(MillisFromEpoch).ToString("O"));
-
-            if (Sender != null)
-            {
-                Message.Add("sender", Sender.ToShortString());
-            }
 
             try
             {
@@ -68,11 +68,6 @@ namespace Sherlock.Services
             foreach (var (k, v) in Message)
             {
                 dic[k] = v;
-            }
-
-            if (Target != null)
-            {
-                dic["target"] = Target.ToShortString();
             }
 
             dic["direction"] = Direction.ToString();

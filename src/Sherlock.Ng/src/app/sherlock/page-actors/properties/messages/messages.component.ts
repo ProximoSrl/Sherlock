@@ -108,6 +108,7 @@ export class MessagesDataSource extends DataSource<any> {
     return Observable.merge(...displayDataChanges).map(() => {
       const data = this._exampleDatabase.data
         .slice()
+        .sort((a, b) => a.sequence - b.sequence)
         .filter((item: ISherlockMessage) => {
           const searchStr = (item.type).toLowerCase();
           if (this.filter.startsWith('-')) {

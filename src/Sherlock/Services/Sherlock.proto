@@ -1,7 +1,6 @@
 syntax="proto3";
 
 import "timestamp.proto";
-import "protos.proto";
 
 option csharp_namespace = "Sherlock.Services";
 package Sherlock;
@@ -48,8 +47,8 @@ message TrackedMessage
 
 	uint32 position = 1;
 	int64  millis_from_epoch = 2;
-	actor.PID sender = 3;
-	actor.PID target = 4;
+	string sender = 3;
+	string target = 4;
 	Direction direction = 5;
 	map<string, string> message = 6;
 	string actor_id = 7;
@@ -67,10 +66,10 @@ message TrackMessagesResponse {
  */
 message InspectionReport
 {
-	actor.PID pid = 1;
+	string actor_id = 1;
 	int64  millis_from_epoch = 2;
 	map<string, string> status = 3;
-	repeated actor.PID childs = 4;
+	repeated string childs = 4;
 	repeated string warnings = 5;
 }
 

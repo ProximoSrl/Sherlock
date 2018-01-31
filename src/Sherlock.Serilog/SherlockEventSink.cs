@@ -120,7 +120,7 @@ namespace Sherlock.Serilog
             if (!logEvent1.Properties.TryGetValue("ActorId", out LogEventPropertyValue v))
                 return;
 
-            var actorId = ((ScalarValue)v).Value.ToString().ToLowerInvariant();
+            var actorId = ((ScalarValue)v).Value.ToString();
 
             if (_buffer == null)
             {

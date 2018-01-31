@@ -24,43 +24,41 @@ namespace Sherlock.Services {
     static SherlockReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5TaGVybG9jay5wcm90bxIIU2hlcmxvY2saD3RpbWVzdGFtcC5wcm90bxoM",
-            "cHJvdG9zLnByb3RvIp8CCgpMb2dNZXNzYWdlEi0KCXRpbWVzdGFtcBgBIAEo",
-            "CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASLgoIbG9nX3R5cGUYAiAB",
-            "KA4yHC5TaGVybG9jay5Mb2dNZXNzYWdlLkxvZ1R5cGUSEwoLbWVzc2FnZV9u",
-            "dW0YAyABKAMSDgoGbG9nZ2VyGAQgASgJEhAKCGFjdG9yX2lkGAUgASgJEgwK",
-            "BHRleHQYBiABKAkSFgoOZXhjZXB0aW9uX3R5cGUYByABKAkiVQoHTG9nVHlw",
-            "ZRILCgdWZXJib3NlEAASCQoFRGVidWcQARIPCgtJbmZvcm1hdGlvbhACEgsK",
-            "B1dhcm5pbmcQAxIJCgVFcnJvchAEEgkKBUZhdGFsEAUiMgoITG9nQmF0Y2gS",
-            "JgoIbWVzc2FnZXMYASADKAsyFC5TaGVybG9jay5Mb2dNZXNzYWdlIhMKEVRy",
-            "YWNrTG9nc1Jlc3BvbnNlItMCCg5UcmFja2VkTWVzc2FnZRIQCghwb3NpdGlv",
-            "bhgBIAEoDRIZChFtaWxsaXNfZnJvbV9lcG9jaBgCIAEoAxIaCgZzZW5kZXIY",
-            "AyABKAsyCi5hY3Rvci5QSUQSGgoGdGFyZ2V0GAQgASgLMgouYWN0b3IuUElE",
-            "EjUKCWRpcmVjdGlvbhgFIAEoDjIiLlNoZXJsb2NrLlRyYWNrZWRNZXNzYWdl",
-            "LkRpcmVjdGlvbhI2CgdtZXNzYWdlGAYgAygLMiUuU2hlcmxvY2suVHJhY2tl",
-            "ZE1lc3NhZ2UuTWVzc2FnZUVudHJ5EhAKCGFjdG9yX2lkGAcgASgJGi4KDE1l",
-            "c3NhZ2VFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAk6AjgBIisK",
-            "CURpcmVjdGlvbhINCglVbmRlZmluZWQQABIGCgJJbhABEgcKA091dBACIjsK",
-            "DU1lc3NhZ2VzQmF0Y2gSKgoIbWVzc2FnZXMYASADKAsyGC5TaGVybG9jay5U",
-            "cmFja2VkTWVzc2FnZSIXChVUcmFja01lc3NhZ2VzUmVzcG9uc2Ui2wEKEElu",
-            "c3BlY3Rpb25SZXBvcnQSFwoDcGlkGAEgASgLMgouYWN0b3IuUElEEhkKEW1p",
+            "Cg5TaGVybG9jay5wcm90bxIIU2hlcmxvY2saD3RpbWVzdGFtcC5wcm90byKf",
+            "AgoKTG9nTWVzc2FnZRItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJv",
+            "dG9idWYuVGltZXN0YW1wEi4KCGxvZ190eXBlGAIgASgOMhwuU2hlcmxvY2su",
+            "TG9nTWVzc2FnZS5Mb2dUeXBlEhMKC21lc3NhZ2VfbnVtGAMgASgDEg4KBmxv",
+            "Z2dlchgEIAEoCRIQCghhY3Rvcl9pZBgFIAEoCRIMCgR0ZXh0GAYgASgJEhYK",
+            "DmV4Y2VwdGlvbl90eXBlGAcgASgJIlUKB0xvZ1R5cGUSCwoHVmVyYm9zZRAA",
+            "EgkKBURlYnVnEAESDwoLSW5mb3JtYXRpb24QAhILCgdXYXJuaW5nEAMSCQoF",
+            "RXJyb3IQBBIJCgVGYXRhbBAFIjIKCExvZ0JhdGNoEiYKCG1lc3NhZ2VzGAEg",
+            "AygLMhQuU2hlcmxvY2suTG9nTWVzc2FnZSITChFUcmFja0xvZ3NSZXNwb25z",
+            "ZSK7AgoOVHJhY2tlZE1lc3NhZ2USEAoIcG9zaXRpb24YASABKA0SGQoRbWls",
+            "bGlzX2Zyb21fZXBvY2gYAiABKAMSDgoGc2VuZGVyGAMgASgJEg4KBnRhcmdl",
+            "dBgEIAEoCRI1CglkaXJlY3Rpb24YBSABKA4yIi5TaGVybG9jay5UcmFja2Vk",
+            "TWVzc2FnZS5EaXJlY3Rpb24SNgoHbWVzc2FnZRgGIAMoCzIlLlNoZXJsb2Nr",
+            "LlRyYWNrZWRNZXNzYWdlLk1lc3NhZ2VFbnRyeRIQCghhY3Rvcl9pZBgHIAEo",
+            "CRouCgxNZXNzYWdlRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJ",
+            "OgI4ASIrCglEaXJlY3Rpb24SDQoJVW5kZWZpbmVkEAASBgoCSW4QARIHCgNP",
+            "dXQQAiI7Cg1NZXNzYWdlc0JhdGNoEioKCG1lc3NhZ2VzGAEgAygLMhguU2hl",
+            "cmxvY2suVHJhY2tlZE1lc3NhZ2UiFwoVVHJhY2tNZXNzYWdlc1Jlc3BvbnNl",
+            "IsgBChBJbnNwZWN0aW9uUmVwb3J0EhAKCGFjdG9yX2lkGAEgASgJEhkKEW1p",
             "bGxpc19mcm9tX2Vwb2NoGAIgASgDEjYKBnN0YXR1cxgDIAMoCzImLlNoZXJs",
-            "b2NrLkluc3BlY3Rpb25SZXBvcnQuU3RhdHVzRW50cnkSGgoGY2hpbGRzGAQg",
-            "AygLMgouYWN0b3IuUElEEhAKCHdhcm5pbmdzGAUgAygJGi0KC1N0YXR1c0Vu",
-            "dHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiGQoXVHJhY2tJ",
-            "bnNwZWN0aW9uUmVzcG9uc2UingEKE0luc3BlY3Rpb25SZXBvcnRNYXASOwoH",
-            "cmVwb3J0cxgBIAMoCzIqLlNoZXJsb2NrLkluc3BlY3Rpb25SZXBvcnRNYXAu",
-            "UmVwb3J0c0VudHJ5GkoKDFJlcG9ydHNFbnRyeRILCgNrZXkYASABKAkSKQoF",
-            "dmFsdWUYAiABKAsyGi5TaGVybG9jay5JbnNwZWN0aW9uUmVwb3J0OgI4ATLy",
-            "AQoPU2hlcmxvY2tTZXJ2aWNlEj4KCVRyYWNrTG9ncxISLlNoZXJsb2NrLkxv",
-            "Z0JhdGNoGhsuU2hlcmxvY2suVHJhY2tMb2dzUmVzcG9uc2UoARJLCg1UcmFj",
-            "a01lc3NhZ2VzEhcuU2hlcmxvY2suTWVzc2FnZXNCYXRjaBofLlNoZXJsb2Nr",
-            "LlRyYWNrTWVzc2FnZXNSZXNwb25zZSgBElIKD1RyYWNrSW5zcGVjdGlvbhIa",
-            "LlNoZXJsb2NrLkluc3BlY3Rpb25SZXBvcnQaIS5TaGVybG9jay5UcmFja0lu",
-            "c3BlY3Rpb25SZXNwb25zZSgBQhSqAhFTaGVybG9jay5TZXJ2aWNlc2IGcHJv",
-            "dG8z"));
+            "b2NrLkluc3BlY3Rpb25SZXBvcnQuU3RhdHVzRW50cnkSDgoGY2hpbGRzGAQg",
+            "AygJEhAKCHdhcm5pbmdzGAUgAygJGi0KC1N0YXR1c0VudHJ5EgsKA2tleRgB",
+            "IAEoCRINCgV2YWx1ZRgCIAEoCToCOAEiGQoXVHJhY2tJbnNwZWN0aW9uUmVz",
+            "cG9uc2UingEKE0luc3BlY3Rpb25SZXBvcnRNYXASOwoHcmVwb3J0cxgBIAMo",
+            "CzIqLlNoZXJsb2NrLkluc3BlY3Rpb25SZXBvcnRNYXAuUmVwb3J0c0VudHJ5",
+            "GkoKDFJlcG9ydHNFbnRyeRILCgNrZXkYASABKAkSKQoFdmFsdWUYAiABKAsy",
+            "Gi5TaGVybG9jay5JbnNwZWN0aW9uUmVwb3J0OgI4ATLyAQoPU2hlcmxvY2tT",
+            "ZXJ2aWNlEj4KCVRyYWNrTG9ncxISLlNoZXJsb2NrLkxvZ0JhdGNoGhsuU2hl",
+            "cmxvY2suVHJhY2tMb2dzUmVzcG9uc2UoARJLCg1UcmFja01lc3NhZ2VzEhcu",
+            "U2hlcmxvY2suTWVzc2FnZXNCYXRjaBofLlNoZXJsb2NrLlRyYWNrTWVzc2Fn",
+            "ZXNSZXNwb25zZSgBElIKD1RyYWNrSW5zcGVjdGlvbhIaLlNoZXJsb2NrLklu",
+            "c3BlY3Rpb25SZXBvcnQaIS5TaGVybG9jay5UcmFja0luc3BlY3Rpb25SZXNw",
+            "b25zZSgBQhSqAhFTaGVybG9jay5TZXJ2aWNlc2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Proto.ProtosReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.LogMessage), global::Sherlock.Services.LogMessage.Parser, new[]{ "Timestamp", "LogType", "MessageNum", "Logger", "ActorId", "Text", "ExceptionType" }, null, new[]{ typeof(global::Sherlock.Services.LogMessage.Types.LogType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.LogBatch), global::Sherlock.Services.LogBatch.Parser, new[]{ "Messages" }, null, null, null),
@@ -68,7 +66,7 @@ namespace Sherlock.Services {
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedMessage), global::Sherlock.Services.TrackedMessage.Parser, new[]{ "Position", "MillisFromEpoch", "Sender", "Target", "Direction", "Message", "ActorId" }, null, new[]{ typeof(global::Sherlock.Services.TrackedMessage.Types.Direction) }, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.MessagesBatch), global::Sherlock.Services.MessagesBatch.Parser, new[]{ "Messages" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackMessagesResponse), global::Sherlock.Services.TrackMessagesResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.InspectionReport), global::Sherlock.Services.InspectionReport.Parser, new[]{ "Pid", "MillisFromEpoch", "Status", "Childs", "Warnings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.InspectionReport), global::Sherlock.Services.InspectionReport.Parser, new[]{ "ActorId", "MillisFromEpoch", "Status", "Childs", "Warnings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackInspectionResponse), global::Sherlock.Services.TrackInspectionResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.InspectionReportMap), global::Sherlock.Services.InspectionReportMap.Parser, new[]{ "Reports" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
@@ -653,8 +651,8 @@ namespace Sherlock.Services {
     public TrackedMessage(TrackedMessage other) : this() {
       position_ = other.position_;
       millisFromEpoch_ = other.millisFromEpoch_;
-      Sender = other.sender_ != null ? other.Sender.Clone() : null;
-      Target = other.target_ != null ? other.Target.Clone() : null;
+      sender_ = other.sender_;
+      target_ = other.target_;
       direction_ = other.direction_;
       message_ = other.message_.Clone();
       actorId_ = other.actorId_;
@@ -690,23 +688,23 @@ namespace Sherlock.Services {
 
     /// <summary>Field number for the "sender" field.</summary>
     public const int SenderFieldNumber = 3;
-    private global::Proto.PID sender_;
+    private string sender_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Proto.PID Sender {
+    public string Sender {
       get { return sender_; }
       set {
-        sender_ = value;
+        sender_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
     /// <summary>Field number for the "target" field.</summary>
     public const int TargetFieldNumber = 4;
-    private global::Proto.PID target_;
+    private string target_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Proto.PID Target {
+    public string Target {
       get { return target_; }
       set {
-        target_ = value;
+        target_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -757,8 +755,8 @@ namespace Sherlock.Services {
       }
       if (Position != other.Position) return false;
       if (MillisFromEpoch != other.MillisFromEpoch) return false;
-      if (!object.Equals(Sender, other.Sender)) return false;
-      if (!object.Equals(Target, other.Target)) return false;
+      if (Sender != other.Sender) return false;
+      if (Target != other.Target) return false;
       if (Direction != other.Direction) return false;
       if (!Message.Equals(other.Message)) return false;
       if (ActorId != other.ActorId) return false;
@@ -770,8 +768,8 @@ namespace Sherlock.Services {
       int hash = 1;
       if (Position != 0) hash ^= Position.GetHashCode();
       if (MillisFromEpoch != 0L) hash ^= MillisFromEpoch.GetHashCode();
-      if (sender_ != null) hash ^= Sender.GetHashCode();
-      if (target_ != null) hash ^= Target.GetHashCode();
+      if (Sender.Length != 0) hash ^= Sender.GetHashCode();
+      if (Target.Length != 0) hash ^= Target.GetHashCode();
       if (Direction != 0) hash ^= Direction.GetHashCode();
       hash ^= Message.GetHashCode();
       if (ActorId.Length != 0) hash ^= ActorId.GetHashCode();
@@ -796,13 +794,13 @@ namespace Sherlock.Services {
         output.WriteRawTag(16);
         output.WriteInt64(MillisFromEpoch);
       }
-      if (sender_ != null) {
+      if (Sender.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteMessage(Sender);
+        output.WriteString(Sender);
       }
-      if (target_ != null) {
+      if (Target.Length != 0) {
         output.WriteRawTag(34);
-        output.WriteMessage(Target);
+        output.WriteString(Target);
       }
       if (Direction != 0) {
         output.WriteRawTag(40);
@@ -827,11 +825,11 @@ namespace Sherlock.Services {
       if (MillisFromEpoch != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MillisFromEpoch);
       }
-      if (sender_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Sender);
+      if (Sender.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Sender);
       }
-      if (target_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Target);
+      if (Target.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Target);
       }
       if (Direction != 0) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Direction);
@@ -857,17 +855,11 @@ namespace Sherlock.Services {
       if (other.MillisFromEpoch != 0L) {
         MillisFromEpoch = other.MillisFromEpoch;
       }
-      if (other.sender_ != null) {
-        if (sender_ == null) {
-          sender_ = new global::Proto.PID();
-        }
-        Sender.MergeFrom(other.Sender);
+      if (other.Sender.Length != 0) {
+        Sender = other.Sender;
       }
-      if (other.target_ != null) {
-        if (target_ == null) {
-          target_ = new global::Proto.PID();
-        }
-        Target.MergeFrom(other.Target);
+      if (other.Target.Length != 0) {
+        Target = other.Target;
       }
       if (other.Direction != 0) {
         Direction = other.Direction;
@@ -896,17 +888,11 @@ namespace Sherlock.Services {
             break;
           }
           case 26: {
-            if (sender_ == null) {
-              sender_ = new global::Proto.PID();
-            }
-            input.ReadMessage(sender_);
+            Sender = input.ReadString();
             break;
           }
           case 34: {
-            if (target_ == null) {
-              target_ = new global::Proto.PID();
-            }
-            input.ReadMessage(target_);
+            Target = input.ReadString();
             break;
           }
           case 40: {
@@ -1191,7 +1177,7 @@ namespace Sherlock.Services {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public InspectionReport(InspectionReport other) : this() {
-      Pid = other.pid_ != null ? other.Pid.Clone() : null;
+      actorId_ = other.actorId_;
       millisFromEpoch_ = other.millisFromEpoch_;
       status_ = other.status_.Clone();
       childs_ = other.childs_.Clone();
@@ -1204,14 +1190,14 @@ namespace Sherlock.Services {
       return new InspectionReport(this);
     }
 
-    /// <summary>Field number for the "pid" field.</summary>
-    public const int PidFieldNumber = 1;
-    private global::Proto.PID pid_;
+    /// <summary>Field number for the "actor_id" field.</summary>
+    public const int ActorIdFieldNumber = 1;
+    private string actorId_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Proto.PID Pid {
-      get { return pid_; }
+    public string ActorId {
+      get { return actorId_; }
       set {
-        pid_ = value;
+        actorId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1238,11 +1224,11 @@ namespace Sherlock.Services {
 
     /// <summary>Field number for the "childs" field.</summary>
     public const int ChildsFieldNumber = 4;
-    private static readonly pb::FieldCodec<global::Proto.PID> _repeated_childs_codec
-        = pb::FieldCodec.ForMessage(34, global::Proto.PID.Parser);
-    private readonly pbc::RepeatedField<global::Proto.PID> childs_ = new pbc::RepeatedField<global::Proto.PID>();
+    private static readonly pb::FieldCodec<string> _repeated_childs_codec
+        = pb::FieldCodec.ForString(34);
+    private readonly pbc::RepeatedField<string> childs_ = new pbc::RepeatedField<string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Proto.PID> Childs {
+    public pbc::RepeatedField<string> Childs {
       get { return childs_; }
     }
 
@@ -1269,7 +1255,7 @@ namespace Sherlock.Services {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Pid, other.Pid)) return false;
+      if (ActorId != other.ActorId) return false;
       if (MillisFromEpoch != other.MillisFromEpoch) return false;
       if (!Status.Equals(other.Status)) return false;
       if(!childs_.Equals(other.childs_)) return false;
@@ -1280,7 +1266,7 @@ namespace Sherlock.Services {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (pid_ != null) hash ^= Pid.GetHashCode();
+      if (ActorId.Length != 0) hash ^= ActorId.GetHashCode();
       if (MillisFromEpoch != 0L) hash ^= MillisFromEpoch.GetHashCode();
       hash ^= Status.GetHashCode();
       hash ^= childs_.GetHashCode();
@@ -1298,9 +1284,9 @@ namespace Sherlock.Services {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (pid_ != null) {
+      if (ActorId.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteMessage(Pid);
+        output.WriteString(ActorId);
       }
       if (MillisFromEpoch != 0L) {
         output.WriteRawTag(16);
@@ -1317,8 +1303,8 @@ namespace Sherlock.Services {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (pid_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pid);
+      if (ActorId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ActorId);
       }
       if (MillisFromEpoch != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MillisFromEpoch);
@@ -1337,11 +1323,8 @@ namespace Sherlock.Services {
       if (other == null) {
         return;
       }
-      if (other.pid_ != null) {
-        if (pid_ == null) {
-          pid_ = new global::Proto.PID();
-        }
-        Pid.MergeFrom(other.Pid);
+      if (other.ActorId.Length != 0) {
+        ActorId = other.ActorId;
       }
       if (other.MillisFromEpoch != 0L) {
         MillisFromEpoch = other.MillisFromEpoch;
@@ -1361,10 +1344,7 @@ namespace Sherlock.Services {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            if (pid_ == null) {
-              pid_ = new global::Proto.PID();
-            }
-            input.ReadMessage(pid_);
+            ActorId = input.ReadString();
             break;
           }
           case 16: {

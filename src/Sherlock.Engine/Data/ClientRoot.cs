@@ -29,8 +29,8 @@ namespace Sherlock.Engine.Data
 
                 case InspectionReport report:
                 {
-                    _map.Reports[report.Pid.ToShortString()] = report;
-                    GetActor(context, report.Pid.ToShortString()).Tell(report);
+                    _map.Reports[report.ActorId] = report;
+                    GetActor(context, report.ActorId).Tell(report);
                     break;
                 }
 
