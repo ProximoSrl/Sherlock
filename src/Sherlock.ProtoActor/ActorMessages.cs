@@ -19,6 +19,7 @@ namespace Sherlock.ProtoActor
         private const int QueueLen = 100;
         private static ConcurrentDictionary<string, FixedLenQueueEx<TrackedMessage>> Messages;
         private static PID _reporter;
+
         static ActorMessages()
         {
             Messages = new ConcurrentDictionary<string, FixedLenQueueEx<TrackedMessage>>();
@@ -39,18 +40,14 @@ namespace Sherlock.ProtoActor
             if (context.Message is Inspect)
                 return null;
 
-            var key = context.Self.ToShortString().ToLowerInvariant();
-            var q = Messages.GetOrAdd(key, new FixedLenQueueEx<TrackedMessage>(QueueLen));
-            return q.Add(i => new TrackedMessage(i, context.Message, context.Sender, TrackedMessage.Types.Direction.In)
-                {
-                    ActorId = key
-                });
+            var actorId = context.Self.ToShortString();
+            var q = Messages.GetOrAdd(actorId, new FixedLenQueueEx<TrackedMessage>(QueueLen));
+            return q.Add(i => new TrackedMessage(actorId, i, context.Message, context.Sender, null, TrackedMessage.Types.Direction.In));
         }
 
         public static IEnumerable<TrackedMessage> MessagesOf(string actorId)
         {
-            if (Messages.TryGetValue(actorId.ToLowerInvariant(),
-                out FixedLenQueueEx<TrackedMessage> messages))
+            if (Messages.TryGetValue(actorId, out FixedLenQueueEx<TrackedMessage> messages))
             {
                 return messages.Reverse();
             }
@@ -62,13 +59,9 @@ namespace Sherlock.ProtoActor
         {
             if (senderContext is IContext context)
             {
-                var key = context.Self.ToShortString().ToLowerInvariant();
+                var key = context.Self.ToShortString();
                 var q = Messages.GetOrAdd(key, new FixedLenQueueEx<TrackedMessage>(QueueLen));
-                return q.Add(i =>
-                    new TrackedMessage(i, messageEnvelope.Message, context.Sender, TrackedMessage.Types.Direction.Out)
-                    {
-                        Target = target
-                    });
+                return q.Add(i => new TrackedMessage(key, i, messageEnvelope.Message, context.Sender, target, TrackedMessage.Types.Direction.Out));
             }
 
             return null;
@@ -76,7 +69,10 @@ namespace Sherlock.ProtoActor
 
         public static void Push(TrackedMessage tracking)
         {
-            _reporter?.Tell(tracking);
+            if (tracking != null)
+            {
+                _reporter?.Tell(tracking);
+            }
         }
     }
 

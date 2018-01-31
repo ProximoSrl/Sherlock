@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using Grpc.Core;
 using Proto;
 using Sherlock.Engine.Data;
-using Sherlock.Engine.Logs;
 using Sherlock.Services;
+using SherlockService = Sherlock.Engine.RpcServices.SherlockService;
 
 namespace Sherlock.Engine
 {
@@ -22,7 +22,7 @@ namespace Sherlock.Engine
             {
                 Services =
                 {
-                    Services.SherlockService.BindService(new Sherlock.Engine.Logs.SherlockService(_data))
+                    Services.SherlockService.BindService(new SherlockService(_data))
                 },
                 Ports = { new ServerPort(host, port, ServerCredentials.Insecure) }
             };

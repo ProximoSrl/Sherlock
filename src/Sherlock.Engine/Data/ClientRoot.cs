@@ -10,7 +10,7 @@ namespace Sherlock.Engine.Data
     {
         private readonly IDictionary<string, PID> _twins = new Dictionary<string, PID>();
         private readonly Props _twinProps;
-        private readonly InspectionReportMap _map = new InspectionReportMap();
+        private InspectionReportMap _map = new InspectionReportMap();
 
         public ClientRoot()
         {
@@ -29,8 +29,8 @@ namespace Sherlock.Engine.Data
 
                 case InspectionReport report:
                 {
-                    _map.Reports[report.Pid.ToShortString()] = report;
-                    GetActor(context, report.Pid.ToShortString()).Tell(report);
+                    _map.Reports[report.ActorId] = report;
+                    GetActor(context, report.ActorId).Tell(report);
                     break;
                 }
 
@@ -50,6 +50,19 @@ namespace Sherlock.Engine.Data
                 {
                     var data = await context.RequestAsync<LogsAndMessagesData>(GetActor(context, q.ActorId), q).ConfigureAwait(false);
                     context.Tell(context.Sender, data);
+                    break;
+                }
+
+                case ClearRequest r:
+                {
+                    foreach (var c in context.Children)
+                    {
+                        c.Stop();
+                    }
+
+                    _twins.Clear();
+                    _map = new InspectionReportMap();
+
                     break;
                 }
             }

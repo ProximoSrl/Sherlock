@@ -100,7 +100,7 @@ namespace Sherlock.ProtoActor
 
                 case InspectionReport report:
                 {
-                    _reports.Reports[report.Pid.ToString()] = report;
+                    _reports.Reports[report.ActorId] = report;
                     break;
                 }
             }

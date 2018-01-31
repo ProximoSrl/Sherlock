@@ -60,7 +60,6 @@ namespace Sherlock.ProtoActor
                     tracking.Message.Add("exceptionMessage", e.Message);
                     throw;
                 }
-
                 ActorMessages.Push(tracking);
             }
             else
