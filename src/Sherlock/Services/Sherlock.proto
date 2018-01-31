@@ -20,7 +20,7 @@ message LogMessage {
     
     google.protobuf.Timestamp timestamp = 1;
     LogType log_type = 2;
-    int64 message_num = 3;
+    uint64 sequence = 3;
     string logger = 4;
     string actor_id = 5;
     string text = 6;
@@ -45,7 +45,7 @@ message TrackedMessage
 		Out = 2;
 	}
 
-	uint32 position = 1;
+	uint64 sequence = 1;
 	int64  millis_from_epoch = 2;
 	string sender = 3;
 	string target = 4;
@@ -82,7 +82,11 @@ message InspectionReportMap
     map<string, InspectionReport> reports = 1;
 }
 
+message ClearRequest {}
+message ClearResponse {}
+
 service SherlockService {
+	rpc Clear(ClearRequest) returns (ClearResponse);
     rpc TrackLogs (stream LogBatch) returns (TrackLogsResponse);
     rpc TrackMessages (stream MessagesBatch) returns (TrackMessagesResponse);
     rpc TrackInspection (stream InspectionReport) returns (TrackInspectionResponse);

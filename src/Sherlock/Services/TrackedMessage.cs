@@ -14,13 +14,13 @@ namespace Sherlock.Services
             Formatting = Formatting.Indented
         };
 
-        public TrackedMessage(string actorId, UInt32 position, object message, PID sender, PID target, Types.Direction direction)
+        public TrackedMessage(string actorId, UInt64 position, object message, PID sender, PID target, Types.Direction direction)
         {
             millisFromEpoch_ = DateTime.UtcNow.ToEpochMillis();
             ActorId = actorId;
-            Position = position;
+            Sequence = position;
             Direction = direction;
-            Message.Add("sequence", Position.ToString());
+            Message.Add("sequence", Sequence.ToString());
 
             if (sender != null)
             {

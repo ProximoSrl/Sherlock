@@ -14,5 +14,6 @@ namespace Sherlock.Engine.Data
         string[] GetClients();
         Task<InspectionReportMap> GetReportAsync(string clientId);
         Task<LogsAndMessagesData> GetDataAsync(string clientId, string actorId);
+        void Clear(string clientId);
     }
 }

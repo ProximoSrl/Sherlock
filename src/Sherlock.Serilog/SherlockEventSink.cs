@@ -52,7 +52,7 @@ namespace Sherlock.Serilog
         private readonly int _flushInterval;
         private readonly ISimpleScheduler _simpleScheduler = new SimpleScheduler();
         private CancellationTokenSource _cts;
-        private readonly Dictionary<string, long> _messageCounter = new Dictionary<string, long>();
+        private readonly Dictionary<string, ulong> _messageCounter = new Dictionary<string, ulong>();
         private IList<LogMessage> _buffer;
 
         public SherlockBackgroundLogReporter(
@@ -133,7 +133,7 @@ namespace Sherlock.Serilog
 
             _buffer.Add(new LogMessage()
             {
-                MessageNum = last,
+                Sequence = last,
                 Timestamp = Timestamp.FromDateTimeOffset(logEvent1.Timestamp),
                 ActorId = actorId,
                 LogType = ConvertLogLevel(logEvent1.Level),

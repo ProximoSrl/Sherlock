@@ -92,5 +92,13 @@ namespace Sherlock.Engine.Data
 
             return new LogsAndMessagesData();
         }
+
+        public void Clear(string clientId)
+        {
+            if (clientId != null && _roots.TryGetValue(clientId, out var node))
+            {
+                node.Tell(new ClearRequest());
+            }
+        }
     }
 }

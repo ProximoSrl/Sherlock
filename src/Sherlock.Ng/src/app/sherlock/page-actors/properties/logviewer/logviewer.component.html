@@ -8,8 +8,8 @@
     </ul>
   </div>
   <ul class="logs">
-    <li *ngFor="let l of logs" [class]="l.level">
-       [ {{l.sequence | paddedNumber:5}} - {{l.timestamp | timestamp :'yyyy/MM/dd HH:mm:ss.SSS'}} {{l.logger}}] {{l.message}}
+    <li *ngFor="let l of logs" [ngClass]="levels[l.logType]">
+       [ {{l.sequence | paddedNumber:6}} - {{l.timestamp | timestamp :'yyyy/MM/dd HH:mm:ss.SSS'}} {{l.logger}}] {{l.text}}
     </li>
   </ul>
 </div>
