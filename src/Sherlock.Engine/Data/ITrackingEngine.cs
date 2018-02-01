@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Sherlock.Messages;
+using Sherlock.Engine.Messages;
 using Sherlock.Services;
 
 namespace Sherlock.Engine.Data
 {
-    public interface IDataEngine : IDisposable
+    public interface ITrackingEngine : IDisposable
     {
         void ProcessSingle(string clientId, object message);
         void ProcessBatch(string clientId, IEnumerable<object> messages);

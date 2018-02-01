@@ -14,15 +14,15 @@ namespace Sherlock.Engine
     public class SherlockServer : IDisposable
     {
         private readonly Server _server;
-        private readonly IDataEngine _data;
+        private readonly ITrackingEngine _tracking;
         public SherlockServer(string host, int port)
         {
-            _data = new DataEngine();
+            _tracking = new TrackingEngine();
             _server = new Grpc.Core.Server()
             {
                 Services =
                 {
-                    Services.SherlockService.BindService(new SherlockService(_data))
+                    Services.SherlockService.BindService(new SherlockService(_tracking))
                 },
                 Ports = { new ServerPort(host, port, ServerCredentials.Insecure) }
             };
@@ -33,9 +33,9 @@ namespace Sherlock.Engine
         public void Dispose()
         {
             _server.ShutdownAsync().Wait();
-            _data.Dispose();
+            _tracking.Dispose();
         }
 
-        public IDataEngine DataEngine => _data;
+        public ITrackingEngine TrackingEngine => _tracking;
     }
 }

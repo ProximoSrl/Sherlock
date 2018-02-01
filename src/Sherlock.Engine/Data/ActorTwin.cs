@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Proto;
-using Sherlock.Messages;
+using Sherlock.Engine.Messages;
 using Sherlock.Services;
 using Sherlock.Support;
 

@@ -1,28 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Proto;
 using Sherlock.Engine.Data;
 using Sherlock.Host.Models;
-using Sherlock.Messages;
-using Sherlock.ProtoActor;
 using Sherlock.Serilog;
-using Sherlock.Services;
 
 namespace Sherlock.Host.Controllers
 {
     [Route("api/[controller]")]
     public class SherlockController : Controller
     {
-        private readonly string _host;
-        private readonly IDataEngine _engine;
-        public SherlockController(IConfiguration configuration, IDataEngine engine)
+        private readonly ITrackingEngine _engine;
+        public SherlockController(ITrackingEngine engine)
         {
             _engine = engine;
-            this._host = "nonhost:5001";
+        }
+
+        [HttpGet("clients")]
+        public string[] Clients()
+        {
+            return _engine.GetClients();
         }
 
         [HttpGet("full/{*id}", Name = "ReportByPath")]

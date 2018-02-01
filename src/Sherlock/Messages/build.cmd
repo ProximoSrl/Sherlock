@@ -1,2 +1,0 @@
-%USERPROFILE%\.nuget\packages\google.protobuf.tools\3.4.0\tools\windows_x64\protoc.exe -I=%USERPROFILE%\.nuget\packages\google.protobuf.tools\3.4.0\tools -I=. -I=..\Services --csharp_opt=file_extension=.g.cs --csharp_out=. Messages.proto
-pause

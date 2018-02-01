@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Proto;
 using Serilog.Context;
-using Sherlock.Messages;
 using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 using Sherlock.Support;

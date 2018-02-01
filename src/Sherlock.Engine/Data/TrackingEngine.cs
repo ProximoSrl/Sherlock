@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 using Proto;
 using Sherlock.Engine.Messages;
 using Sherlock.Services;
-using LogsAndMessagesData = Sherlock.Messages.LogsAndMessagesData;
-using QueryLogsAndMessages = Sherlock.Messages.QueryLogsAndMessages;
 
 namespace Sherlock.Engine.Data
 {
-    public class DataEngine : IDataEngine
+    public class TrackingEngine : ITrackingEngine
     {
         private readonly ConcurrentDictionary<string, PID> _roots = new ConcurrentDictionary<string, PID>();
         private readonly Props _props;
 
-        public DataEngine()
+        public TrackingEngine()
         {
             _props = Actor.FromProducer(() => new ClientRoot());
         }

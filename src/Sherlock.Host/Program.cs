@@ -46,7 +46,7 @@ namespace Sherlock.Host
         {
             return WebHost.CreateDefaultBuilder(args)
                 .UseConfiguration(_config)
-                .ConfigureServices(services => services.AddSingleton(server.DataEngine))
+                .ConfigureServices(services => services.AddSingleton(server.TrackingEngine))
                 .UseStartup<Startup>()
                 .Build();
         }

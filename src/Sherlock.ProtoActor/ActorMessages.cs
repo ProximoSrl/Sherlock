@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Proto;
 using Proto.Schedulers.SimpleScheduler;
 using Sherlock.Client;
-using Sherlock.Messages;
 using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 using Sherlock.Support;

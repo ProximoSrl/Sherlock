@@ -10,9 +10,9 @@ namespace Sherlock.Engine.RpcServices
 {
     public class SherlockService : Services.SherlockService.SherlockServiceBase
     {
-        private readonly IDataEngine _engine;
+        private readonly ITrackingEngine _engine;
 
-        public SherlockService(IDataEngine engine)
+        public SherlockService(ITrackingEngine engine)
         {
             _engine = engine;
         }
