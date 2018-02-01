@@ -9,9 +9,9 @@ namespace Sherlock.Client
 {
     public interface ISherlockClient : IDisposable
     {
-        Task<TrackLogsResponse> PushAsync(IEnumerable<LogMessage> logs);
+        Task<TrackLogsResponse> PushAsync(IEnumerable<TrackedLog> logs);
         Task<TrackMessagesResponse> PushAsync(IEnumerable<TrackedMessage> messages);
-        Task<TrackInspectionResponse> PushAsync(IEnumerable<InspectionReport> reports);
+        Task<TrackStateResponse> PushAsync(IEnumerable<TrackedState> reports);
         void Clear();
     }
 
@@ -51,7 +51,7 @@ namespace Sherlock.Client
             _clientId = new Metadata { { SherlockConstants.ClientId, name } };
         }
 
-        public async Task<TrackLogsResponse> PushAsync(IEnumerable<LogMessage> logs)
+        public async Task<TrackLogsResponse> PushAsync(IEnumerable<TrackedLog> logs)
         {
             using (var c = _sherlockClient.TrackLogs(_clientId))
             {
@@ -77,9 +77,9 @@ namespace Sherlock.Client
             }
         }
 
-        public async Task<TrackInspectionResponse> PushAsync(IEnumerable<InspectionReport> reports)
+        public async Task<TrackStateResponse> PushAsync(IEnumerable<TrackedState> reports)
         {
-            using (var c = _sherlockClient.TrackInspection(_clientId))
+            using (var c = _sherlockClient.TrackState(_clientId))
             {
                 foreach (var i in reports)
                 {

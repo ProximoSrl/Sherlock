@@ -53,7 +53,7 @@ namespace Sherlock.Serilog
         private readonly ISimpleScheduler _simpleScheduler = new SimpleScheduler();
         private CancellationTokenSource _cts;
         private readonly Dictionary<string, ulong> _messageCounter = new Dictionary<string, ulong>();
-        private IList<LogMessage> _buffer;
+        private IList<Services.TrackedLog> _buffer;
 
         public SherlockBackgroundLogReporter(
             ISherlockClient client,
@@ -124,14 +124,14 @@ namespace Sherlock.Serilog
 
             if (_buffer == null)
             {
-                _buffer = new List<LogMessage>();
+                _buffer = new List<Services.TrackedLog>();
             }
 
             _messageCounter.TryGetValue(actorId, out var last);
             last++;
             _messageCounter[actorId] = last;
 
-            _buffer.Add(new LogMessage()
+            _buffer.Add(new Services.TrackedLog()
             {
                 Sequence = last,
                 Timestamp = Timestamp.FromDateTimeOffset(logEvent1.Timestamp),
@@ -142,22 +142,22 @@ namespace Sherlock.Serilog
             });
         }
 
-        private LogMessage.Types.LogType ConvertLogLevel(LogEventLevel level)
+        private Services.TrackedLog.Types.LogType ConvertLogLevel(LogEventLevel level)
         {
             switch (level)
             {
                 case LogEventLevel.Verbose:
-                    return LogMessage.Types.LogType.Verbose;
+                    return Services.TrackedLog.Types.LogType.Verbose;
                 case LogEventLevel.Debug:
-                    return LogMessage.Types.LogType.Debug;
+                    return Services.TrackedLog.Types.LogType.Debug;
                 case LogEventLevel.Information:
-                    return LogMessage.Types.LogType.Information;
+                    return Services.TrackedLog.Types.LogType.Information;
                 case LogEventLevel.Warning:
-                    return LogMessage.Types.LogType.Warning;
+                    return Services.TrackedLog.Types.LogType.Warning;
                 case LogEventLevel.Error:
-                    return LogMessage.Types.LogType.Error;
+                    return Services.TrackedLog.Types.LogType.Error;
                 case LogEventLevel.Fatal:
-                    return LogMessage.Types.LogType.Fatal;
+                    return Services.TrackedLog.Types.LogType.Fatal;
             }
 
             throw new InvalidOperationException();

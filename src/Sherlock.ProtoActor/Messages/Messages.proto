@@ -1,0 +1,23 @@
+﻿syntax = "proto3";
+option csharp_namespace = "Sherlock.ProtoActor.Messages";
+
+import "Sherlock.proto";
+import "Protos.proto";
+
+message AddToInspection
+{
+	actor.PID ActorId = 1;
+}
+
+message Inspect {}
+
+message ReportState{}
+
+message MonkeyCrash {
+	enum CrashType {
+		CrashException = 0;
+	}
+
+	CrashType crash_type = 1;
+	string message = 2;
+}

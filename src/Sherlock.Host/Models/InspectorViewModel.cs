@@ -13,7 +13,7 @@ namespace Sherlock.Host.Models
         public Node Root => _root;
 
         public InspectorViewModel(
-            InspectionReportMap map,
+            TrackedStateMap map,
             Func<string, string> urlmapper,
             bool recursive,
             Action<Node> action = null

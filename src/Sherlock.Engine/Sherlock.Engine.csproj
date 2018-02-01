@@ -5,4 +5,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Sherlock\Sherlock.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Proto.Actor" Version="0.1.16" />
+  </ItemGroup>
 </Project>

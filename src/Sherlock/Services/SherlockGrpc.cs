@@ -19,8 +19,8 @@ namespace Sherlock.Services {
     static readonly grpc::Marshaller<global::Sherlock.Services.TrackLogsResponse> __Marshaller_TrackLogsResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackLogsResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.MessagesBatch> __Marshaller_MessagesBatch = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.MessagesBatch.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Sherlock.Services.TrackMessagesResponse> __Marshaller_TrackMessagesResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackMessagesResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Sherlock.Services.InspectionReport> __Marshaller_InspectionReport = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.InspectionReport.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Sherlock.Services.TrackInspectionResponse> __Marshaller_TrackInspectionResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackInspectionResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Sherlock.Services.TrackedState> __Marshaller_TrackedState = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackedState.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Sherlock.Services.TrackStateResponse> __Marshaller_TrackStateResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Sherlock.Services.TrackStateResponse.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Sherlock.Services.ClearRequest, global::Sherlock.Services.ClearResponse> __Method_Clear = new grpc::Method<global::Sherlock.Services.ClearRequest, global::Sherlock.Services.ClearResponse>(
         grpc::MethodType.Unary,
@@ -43,12 +43,12 @@ namespace Sherlock.Services {
         __Marshaller_MessagesBatch,
         __Marshaller_TrackMessagesResponse);
 
-    static readonly grpc::Method<global::Sherlock.Services.InspectionReport, global::Sherlock.Services.TrackInspectionResponse> __Method_TrackInspection = new grpc::Method<global::Sherlock.Services.InspectionReport, global::Sherlock.Services.TrackInspectionResponse>(
+    static readonly grpc::Method<global::Sherlock.Services.TrackedState, global::Sherlock.Services.TrackStateResponse> __Method_TrackState = new grpc::Method<global::Sherlock.Services.TrackedState, global::Sherlock.Services.TrackStateResponse>(
         grpc::MethodType.ClientStreaming,
         __ServiceName,
-        "TrackInspection",
-        __Marshaller_InspectionReport,
-        __Marshaller_TrackInspectionResponse);
+        "TrackState",
+        __Marshaller_TrackedState,
+        __Marshaller_TrackStateResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -74,7 +74,7 @@ namespace Sherlock.Services {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::Sherlock.Services.TrackInspectionResponse> TrackInspection(grpc::IAsyncStreamReader<global::Sherlock.Services.InspectionReport> requestStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Sherlock.Services.TrackStateResponse> TrackState(grpc::IAsyncStreamReader<global::Sherlock.Services.TrackedState> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -136,13 +136,13 @@ namespace Sherlock.Services {
       {
         return CallInvoker.AsyncClientStreamingCall(__Method_TrackMessages, null, options);
       }
-      public virtual grpc::AsyncClientStreamingCall<global::Sherlock.Services.InspectionReport, global::Sherlock.Services.TrackInspectionResponse> TrackInspection(grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
+      public virtual grpc::AsyncClientStreamingCall<global::Sherlock.Services.TrackedState, global::Sherlock.Services.TrackStateResponse> TrackState(grpc::Metadata headers = null, DateTime? deadline = null, CancellationToken cancellationToken = default(CancellationToken))
       {
-        return TrackInspection(new grpc::CallOptions(headers, deadline, cancellationToken));
+        return TrackState(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncClientStreamingCall<global::Sherlock.Services.InspectionReport, global::Sherlock.Services.TrackInspectionResponse> TrackInspection(grpc::CallOptions options)
+      public virtual grpc::AsyncClientStreamingCall<global::Sherlock.Services.TrackedState, global::Sherlock.Services.TrackStateResponse> TrackState(grpc::CallOptions options)
       {
-        return CallInvoker.AsyncClientStreamingCall(__Method_TrackInspection, null, options);
+        return CallInvoker.AsyncClientStreamingCall(__Method_TrackState, null, options);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override SherlockServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -159,7 +159,7 @@ namespace Sherlock.Services {
           .AddMethod(__Method_Clear, serviceImpl.Clear)
           .AddMethod(__Method_TrackLogs, serviceImpl.TrackLogs)
           .AddMethod(__Method_TrackMessages, serviceImpl.TrackMessages)
-          .AddMethod(__Method_TrackInspection, serviceImpl.TrackInspection).Build();
+          .AddMethod(__Method_TrackState, serviceImpl.TrackState).Build();
     }
 
   }

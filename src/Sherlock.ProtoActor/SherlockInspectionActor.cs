@@ -9,6 +9,7 @@ using Proto;
 using Proto.Schedulers.SimpleScheduler;
 using Sherlock.Client;
 using Sherlock.Messages;
+using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 
 namespace Sherlock.ProtoActor
@@ -16,7 +17,7 @@ namespace Sherlock.ProtoActor
     public class SherlockInspectionActor : IActor
     {
         private readonly ISimpleScheduler _scheduler;
-        private readonly InspectionReportMap _reports = new InspectionReportMap();
+        private readonly TrackedStateMap _reports = new TrackedStateMap();
         private CancellationTokenSource _cts;
         public static PID Pid { get; private set; }
         private readonly HashSet<PID> _targets = new HashSet<PID>();
@@ -54,7 +55,7 @@ namespace Sherlock.ProtoActor
 
                 case AddToInspection add:
                 {
-                    _targets.Add(add.Actor);
+                    _targets.Add(add.ActorId);
                     break;
                 }
 
@@ -92,13 +93,13 @@ namespace Sherlock.ProtoActor
                     break;
                 }
 
-                case InspectionReportRequest req:
+                case ReportState req:
                 {
                     context.Sender.Tell(_reports);
                     break;
                 }
 
-                case InspectionReport report:
+                case TrackedState report:
                 {
                     _reports.Reports[report.ActorId] = report;
                     break;

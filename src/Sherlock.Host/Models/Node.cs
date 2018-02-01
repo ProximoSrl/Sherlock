@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sherlock.Serilog;
 using Sherlock.Services;
+using TrackedLog = Sherlock.Services.TrackedLog;
 
 namespace Sherlock.Host.Models
 {
@@ -21,7 +22,7 @@ namespace Sherlock.Host.Models
         public IList<string> Warnings { get; private set; }
         public IEnumerable<Node> ChildsNodes { get; private set; }
         public DateTime Timestamp { get; private set; }
-        public IEnumerable<LogMessage> Logs { get; set; }
+        public IEnumerable<TrackedLog> Logs { get; set; }
 
         public Node(string id, bool recursive)
         {
@@ -37,7 +38,7 @@ namespace Sherlock.Host.Models
             }
         }
 
-        public Node(InspectionReport report, bool recursive) : this(report.ActorId, recursive)
+        public Node(TrackedState report, bool recursive) : this(report.ActorId, recursive)
         {
             Timestamp = UnixEpoch.AddMilliseconds(report.MillisFromEpoch).ToLocalTime();
 

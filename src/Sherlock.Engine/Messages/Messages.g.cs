@@ -7,7 +7,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace Sherlock.Messages {
+namespace Sherlock.Engine.Messages {
 
   /// <summary>Holder for reflection information generated from Messages.proto</summary>
   public static partial class MessagesReflection {
@@ -22,22 +22,203 @@ namespace Sherlock.Messages {
     static MessagesReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg5NZXNzYWdlcy5wcm90bxoOU2hlcmxvY2sucHJvdG8iJwoUUXVlcnlMb2dz",
-            "QW5kTWVzc2FnZXMSDwoHYWN0b3JJZBgBIAEoCSJ2ChNMb2dzQW5kTWVzc2Fn",
-            "ZXNEYXRhEg8KB2FjdG9ySWQYASABKAkSKgoITWVzc2FnZXMYAiADKAsyGC5T",
-            "aGVybG9jay5UcmFja2VkTWVzc2FnZRIiCgRMb2dzGAMgAygLMhQuU2hlcmxv",
-            "Y2suTG9nTWVzc2FnZUIUqgIRU2hlcmxvY2suTWVzc2FnZXNiBnByb3RvMw=="));
+            "Cg5NZXNzYWdlcy5wcm90bxoOU2hlcmxvY2sucHJvdG8iCQoHSW5zcGVjdCIO",
+            "CgxRdWVyeVJlcG9ydHMiJwoUUXVlcnlMb2dzQW5kTWVzc2FnZXMSDwoHYWN0",
+            "b3JJZBgBIAEoCSJ2ChNMb2dzQW5kTWVzc2FnZXNEYXRhEg8KB2FjdG9ySWQY",
+            "ASABKAkSKgoITWVzc2FnZXMYAiADKAsyGC5TaGVybG9jay5UcmFja2VkTWVz",
+            "c2FnZRIiCgRMb2dzGAMgAygLMhQuU2hlcmxvY2suTG9nTWVzc2FnZUIbqgIY",
+            "U2hlcmxvY2suRW5naW5lLk1lc3NhZ2VzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Sherlock.Services.SherlockReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Messages.QueryLogsAndMessages), global::Sherlock.Messages.QueryLogsAndMessages.Parser, new[]{ "ActorId" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Messages.LogsAndMessagesData), global::Sherlock.Messages.LogsAndMessagesData.Parser, new[]{ "ActorId", "Messages", "Logs" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Engine.Messages.Inspect), global::Sherlock.Engine.Messages.Inspect.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Engine.Messages.QueryReports), global::Sherlock.Engine.Messages.QueryReports.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Engine.Messages.QueryLogsAndMessages), global::Sherlock.Engine.Messages.QueryLogsAndMessages.Parser, new[]{ "ActorId" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Engine.Messages.LogsAndMessagesData), global::Sherlock.Engine.Messages.LogsAndMessagesData.Parser, new[]{ "ActorId", "Messages", "Logs" }, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
+  public sealed partial class Inspect : pb::IMessage<Inspect> {
+    private static readonly pb::MessageParser<Inspect> _parser = new pb::MessageParser<Inspect>(() => new Inspect());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Inspect> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Sherlock.Engine.Messages.MessagesReflection.Descriptor.MessageTypes[0]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Inspect() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Inspect(Inspect other) : this() {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Inspect Clone() {
+      return new Inspect(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Inspect);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Inspect other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Inspect other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class QueryReports : pb::IMessage<QueryReports> {
+    private static readonly pb::MessageParser<QueryReports> _parser = new pb::MessageParser<QueryReports>(() => new QueryReports());
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<QueryReports> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Sherlock.Engine.Messages.MessagesReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryReports() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryReports(QueryReports other) : this() {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public QueryReports Clone() {
+      return new QueryReports(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as QueryReports);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(QueryReports other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return true;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(QueryReports other) {
+      if (other == null) {
+        return;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+        }
+      }
+    }
+
+  }
+
   public sealed partial class QueryLogsAndMessages : pb::IMessage<QueryLogsAndMessages> {
     private static readonly pb::MessageParser<QueryLogsAndMessages> _parser = new pb::MessageParser<QueryLogsAndMessages>(() => new QueryLogsAndMessages());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -45,7 +226,7 @@ namespace Sherlock.Messages {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Sherlock.Messages.MessagesReflection.Descriptor.MessageTypes[0]; }
+      get { return global::Sherlock.Engine.Messages.MessagesReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -162,7 +343,7 @@ namespace Sherlock.Messages {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Sherlock.Messages.MessagesReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Sherlock.Engine.Messages.MessagesReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using Proto;
 using Serilog.Context;
 using Sherlock.Messages;
+using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
 using Sherlock.Support;
 
@@ -151,15 +152,15 @@ namespace Sherlock.ProtoActor
             }
         }
 
-        private IInspectionReport CreateReport(IContext context)
+        private ITrackedState CreateReport(IContext context)
         {
             foreach (var child in context.Children)
             {
                 child.Request(Inspect.Instance, context.Sender);
             }
 
-            var report = InspectionReport
-                .Create(context)
+            var report = TrackedState
+                .Create(context.Self.ToShortString(), context.Children.Select(x=>x.ToShortString()))
                 .Add("kernel::name", __name)
                 .Add("kernel::actorType", GetType().FullName)
                 .Add("kernel::status", __currentStatus)
@@ -176,13 +177,13 @@ namespace Sherlock.ProtoActor
                 report.Add("kernel::group", __group);
             }
 
-            OnReport(report);
+            ReportState(report);
             return report;
         }
 
         protected abstract Task OnReceiveAsync(IContext context);
 
-        protected virtual void OnReport(IInspectionReport report)
+        protected virtual void ReportState(ITrackedState report)
         {
         }
     }

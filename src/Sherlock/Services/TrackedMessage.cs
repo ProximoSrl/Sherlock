@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Proto;
 using Sherlock.Support;
 
 namespace Sherlock.Services
@@ -14,33 +13,33 @@ namespace Sherlock.Services
             Formatting = Formatting.Indented
         };
 
-        public TrackedMessage(string actorId, UInt64 position, object message, PID sender, PID target, Types.Direction direction)
+        public TrackedMessage(string actorId, UInt64 position, object message, string senderId, string targetId, Types.Direction direction)
         {
             millisFromEpoch_ = DateTime.UtcNow.ToEpochMillis();
             ActorId = actorId;
             Sequence = position;
             Direction = direction;
             Message.Add("sequence", Sequence.ToString());
-
-            if (sender != null)
+            
+            if (senderId != null)
             {
-                Sender = sender.ToShortString();
+                Sender = senderId;
                 Message.Add("sender", Sender);
             }
 
-            if (target != null)
+            if (targetId != null)
             {
-                Target = target.ToShortString();
+                Target = targetId;
                 Message.Add("target", Target);
             }
 
             switch (message)
             {
-                case Terminated terminated:
-                {
-                    Message.Add("type", $"{message.GetType().FullName} => {terminated.Who.ToShortString()}");
-                    break;
-                }
+//                case Terminated terminated:
+//                {
+//                    Message.Add("type", $"{message.GetType().FullName} => {terminated.Who.ToShortString()}");
+//                    break;
+//                }
 
                 default:
                 {
@@ -65,9 +64,9 @@ namespace Sherlock.Services
         {
             var dic = new Dictionary<string, string>();
 
-            foreach (var (k, v) in Message)
+            foreach (var kv in Message)
             {
-                dic[k] = v;
+                dic[kv.Key] = kv.Value;
             }
 
             dic["direction"] = Direction.ToString();

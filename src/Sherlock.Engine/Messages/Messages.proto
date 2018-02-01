@@ -1,7 +1,13 @@
 ﻿syntax = "proto3";
-option csharp_namespace = "Sherlock.Messages";
+option csharp_namespace = "Sherlock.Engine.Messages";
 
 import "Sherlock.proto";
+
+message Inspect
+{
+}
+
+message QueryReports {}
 
 message QueryLogsAndMessages{
 	string actorId = 1;

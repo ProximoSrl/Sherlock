@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Proto;
-using Sherlock.Messages;
+using Sherlock.Engine.Messages;
 using Sherlock.Services;
+using LogsAndMessagesData = Sherlock.Messages.LogsAndMessagesData;
+using QueryLogsAndMessages = Sherlock.Messages.QueryLogsAndMessages;
 
 namespace Sherlock.Engine.Data
 {
@@ -10,7 +12,7 @@ namespace Sherlock.Engine.Data
     {
         private readonly IDictionary<string, PID> _twins = new Dictionary<string, PID>();
         private readonly Props _twinProps;
-        private InspectionReportMap _map = new InspectionReportMap();
+        private TrackedStateMap _map = new TrackedStateMap();
 
         public ClientRoot()
         {
@@ -21,13 +23,13 @@ namespace Sherlock.Engine.Data
         {
             switch (context.Message)
             {
-                case LogMessage log:
+                case TrackedLog log:
                 {
                     GetActor(context, log.ActorId).Tell(log);
                     break;
                 }
 
-                case InspectionReport report:
+                case TrackedState report:
                 {
                     _map.Reports[report.ActorId] = report;
                     GetActor(context, report.ActorId).Tell(report);
@@ -40,7 +42,7 @@ namespace Sherlock.Engine.Data
                     break;
                 }
 
-                case InspectionReportRequest req:
+                case QueryReports req:
                 {
                     context.Tell(context.Sender, _map);
                     break;
@@ -61,7 +63,7 @@ namespace Sherlock.Engine.Data
                     }
 
                     _twins.Clear();
-                    _map = new InspectionReportMap();
+                    _map = new TrackedStateMap();
 
                     break;
                 }
