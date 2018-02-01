@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '', component: LayoutComponent,
     children: [
       { path: 'index', component: PageIndexComponent },
-      { path: 'actors', component: PageActorsComponent },
+      { path: 'actors/:clientId', component: PageActorsComponent },
       { path: '', redirectTo: 'index', pathMatch: 'full' }
     ]
   }

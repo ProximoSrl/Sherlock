@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
-import { ISherlockNode, ISherlockMessage } from '../actors.service';
+import { ISherlockNode, ISherlockMessage } from '../../actors.service';
 
 @Component({
   selector: 'app-properties',

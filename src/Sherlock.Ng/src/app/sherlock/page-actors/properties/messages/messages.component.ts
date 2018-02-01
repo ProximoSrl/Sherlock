@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
-import { ISherlockNode, ISherlockMessage } from '../../actors.service';
+import { ISherlockNode, ISherlockMessage } from '../../../actors.service';
 
 @Component({
   selector: 'app-messages',

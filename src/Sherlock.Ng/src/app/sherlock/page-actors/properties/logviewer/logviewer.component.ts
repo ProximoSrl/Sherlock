@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
-import { ISherlockLog } from '../../actors.service';
+import { ISherlockLog } from '../../../actors.service';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({

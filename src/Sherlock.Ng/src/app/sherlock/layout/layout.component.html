@@ -1,10 +1,10 @@
 <div>
-    <mat-toolbar color="primary">
-        <span>
-            Sherlock
-            <a mat-button [routerLink]=" ['index'] ">Home</a>
-            <a mat-button [routerLink]=" ['actors'] ">Actors</a>
-        </span>
-    </mat-toolbar>
-    <router-outlet></router-outlet>
+  <mat-toolbar color="primary">
+    <span>
+      Sherlock
+      <a mat-button [routerLink]=" ['index'] " routerLinkActive="active">Home</a>
+      <a mat-button [routerLink]=" ['actors', c] " *ngFor=" let c of clients " routerLinkActive="active">{{c}}</a>
+    </span>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
 </div>

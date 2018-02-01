@@ -6,17 +6,24 @@ export class ActorDataService {
 
   constructor(private http: HttpClient) { }
 
-  public getRoot(): Promise<ISherlockNode> {
-    return this.http.get<ISherlockNode>('/api/sherlock/tree').toPromise();
-    //    return Promise.resolve(json);
+  public getClients(): Promise<string[]> {
+    return this.http.get<string[]>('/api/actors/clients').toPromise();
   }
 
-  public getDetail(nodeId: string): Promise<ISherlockNode> {
-    return this.http.get<ISherlockNode>('/api/sherlock/full/' + encodeURIComponent(nodeId)).toPromise();
+  public getRoot(clientId: string): Promise<ISherlockNode> {
+    const uri = '/api/actors/tree/'
+      + encodeURIComponent(clientId);
+
+    return this.http.get<ISherlockNode>(uri).toPromise();
   }
 
-  public getLogs(nodeId: string): Promise<ISherlockLog[]> {
-    return this.http.get<ISherlockLog[]>('/api/sherlock/messages/' + encodeURIComponent(nodeId)).toPromise();
+  public getDetail(clientId: string, nodeId: string): Promise<ISherlockNode> {
+    const uri = '/api/actors/full/'
+      + encodeURIComponent(clientId)
+      + '/'
+      + encodeURIComponent(nodeId);
+
+    return this.http.get<ISherlockNode>(uri).toPromise();
   }
 }
 

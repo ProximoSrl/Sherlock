@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActorDataService } from '../actors.service';
 
 @Component({
   selector: 'app-layout',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
+  clients: string[] = [];
 
-  constructor() { }
+  constructor(private _dataservice: ActorDataService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.clients = await this._dataservice.getClients();
   }
-
 }

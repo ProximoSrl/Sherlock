@@ -8,10 +8,10 @@ using Sherlock.Serilog;
 namespace Sherlock.Host.Controllers
 {
     [Route("api/[controller]")]
-    public class SherlockController : Controller
+    public class ActorsController : Controller
     {
         private readonly ITrackingEngine _engine;
-        public SherlockController(ITrackingEngine engine)
+        public ActorsController(ITrackingEngine engine)
         {
             _engine = engine;
         }
@@ -22,15 +22,16 @@ namespace Sherlock.Host.Controllers
             return _engine.GetClients();
         }
 
-        [HttpGet("full/{*id}", Name = "ReportByPath")]
-        public async Task<Node> Full(string id)
+        [HttpGet("full/{clientId}/{*id}", Name = "ReportByPath")]
+        public async Task<Node> Full(string clientId, string id)
         {
             if (id != null)
             {
                 id = System.Web.HttpUtility.UrlDecode(id);
             }
 
-            var clientId = _engine.GetClients().FirstOrDefault();
+            clientId = System.Web.HttpUtility.UrlDecode(clientId ?? _engine.GetClients().FirstOrDefault());
+
             var report = await _engine.GetReportAsync(clientId).ConfigureAwait(false);
 
             var model = new InspectorViewModel(report, x => Url.RouteUrl(
@@ -52,15 +53,17 @@ namespace Sherlock.Host.Controllers
             return node;
         }
 
-        [HttpGet("tree/{*id}")]
-        public async Task<Node> Tree(string id)
+        [HttpGet("tree/{clientId}/{*id}")]
+        public async Task<Node> Tree(string clientId, string id)
         {
             if (id != null)
             {
                 id = System.Web.HttpUtility.UrlDecode(id);
             }
 
-            var report = await _engine.GetReportAsync(_engine.GetClients().FirstOrDefault()).ConfigureAwait(false);
+            clientId = System.Web.HttpUtility.UrlDecode(clientId ?? _engine.GetClients().FirstOrDefault());
+
+            var report = await _engine.GetReportAsync(clientId).ConfigureAwait(false);
 
             var model = new InspectorViewModel(report, x => Url.RouteUrl(
                 "ReportByPath",
@@ -83,17 +86,6 @@ namespace Sherlock.Host.Controllers
             });
 
             return model.ByPath(id);
-        }
-
-        [HttpGet("messages/{*id}")]
-        public object Messages(string id)
-        {
-            if (id != null)
-            {
-                id = System.Web.HttpUtility.UrlDecode(id);
-            }
-
-            return ActorLogs.LogsOf(id).ToArray();
         }
     }
 }

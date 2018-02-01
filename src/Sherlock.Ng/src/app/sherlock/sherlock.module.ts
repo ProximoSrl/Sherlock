@@ -8,7 +8,7 @@ import { SherlockRoutingModule } from './sherlock.routes';
 import { PageActorsComponent } from './page-actors/page-actors.component';
 import { ActorstreeComponent } from './page-actors/actorstree/actorstree.component';
 import { VisModule } from 'ngx-vis';
-import { ActorDataService } from './page-actors/actors.service';
+import { ActorDataService } from './actors.service';
 import { PropertiesComponent } from './page-actors/properties/properties.component';
 import { MessagesComponent } from './page-actors/properties/messages/messages.component';
 import { StateComponent } from './page-actors/properties/state/state.component';

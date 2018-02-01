@@ -1,1 +1,8 @@
-<h1>Sherlock</h1>
+<mat-card *ngFor="let client of clients">
+  <mat-card-title>
+    {{client}}
+  </mat-card-title>
+  <mat-card-content>
+    <a mat-button [routerLink]=" ['../actors', client] ">show</a>
+  </mat-card-content>
+</mat-card>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActorDataService, ISherlockNode, ISherlockLog } from './actors.service';
+import { ActorDataService, ISherlockNode, ISherlockLog } from '../actors.service';
+import 'rxjs/add/operator/switchMap';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-page-actors',
@@ -7,19 +9,23 @@ import { ActorDataService, ISherlockNode, ISherlockLog } from './actors.service'
   styleUrls: ['./page-actors.component.css']
 })
 export class PageActorsComponent implements OnInit {
-  public logs: ISherlockLog[];
+  _clientId: string;
   public nodes: ISherlockNode;
   public selected: ISherlockNode;
-  constructor(private _dataservice: ActorDataService) { }
+
+  constructor(
+    private _route: ActivatedRoute,
+    private _dataservice: ActorDataService
+  ) { }
 
   async ngOnInit() {
-    this.nodes = await this._dataservice.getRoot();
+    this._clientId = this._route.snapshot.paramMap.get('clientId');
+    this.nodes = await this._dataservice.getRoot(this._clientId);
   }
 
   async nodeSelected(node: ISherlockNode) {
     if (node) {
-      this.selected = await this._dataservice.getDetail(node.id);
-      this.logs = await this._dataservice.getLogs(node.id);
+      this.selected = await this._dataservice.getDetail(this._clientId, node.id);
     }
   }
 }

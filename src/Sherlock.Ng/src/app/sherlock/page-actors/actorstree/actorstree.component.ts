@@ -9,7 +9,7 @@ import {
   VisNetworkOptions
 } from 'ngx-vis';
 import { OnDestroy, OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { ISherlockNode } from '../actors.service';
+import { ISherlockNode } from '../../actors.service';
 import { Color } from 'vis';
 import { id } from '@swimlane/ngx-charts/release/utils';
 

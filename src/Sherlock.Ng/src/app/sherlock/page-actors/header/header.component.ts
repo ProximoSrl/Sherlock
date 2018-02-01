@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ISherlockNode } from '../actors.service';
+import { ISherlockNode } from '../../actors.service';
 
 @Component({
   selector: 'app-header',
