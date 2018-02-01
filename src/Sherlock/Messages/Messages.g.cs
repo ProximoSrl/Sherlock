@@ -212,11 +212,11 @@ namespace Sherlock.Messages {
 
     /// <summary>Field number for the "Logs" field.</summary>
     public const int LogsFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::Sherlock.Services.LogMessage> _repeated_logs_codec
-        = pb::FieldCodec.ForMessage(26, global::Sherlock.Services.LogMessage.Parser);
-    private readonly pbc::RepeatedField<global::Sherlock.Services.LogMessage> logs_ = new pbc::RepeatedField<global::Sherlock.Services.LogMessage>();
+    private static readonly pb::FieldCodec<global::Sherlock.Services.TrackedLog> _repeated_logs_codec
+        = pb::FieldCodec.ForMessage(26, global::Sherlock.Services.TrackedLog.Parser);
+    private readonly pbc::RepeatedField<global::Sherlock.Services.TrackedLog> logs_ = new pbc::RepeatedField<global::Sherlock.Services.TrackedLog>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Sherlock.Services.LogMessage> Logs {
+    public pbc::RepeatedField<global::Sherlock.Services.TrackedLog> Logs {
       get { return logs_; }
     }
 

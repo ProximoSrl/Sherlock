@@ -8,7 +8,7 @@ package Sherlock;
 /*
  * Log tracking
  */
-message LogMessage {
+message TrackedLog {
     enum LogType {
         Verbose = 0;
         Debug = 1;
@@ -28,7 +28,7 @@ message LogMessage {
 }
 
 message LogBatch {
-    repeated LogMessage messages = 1;
+    repeated TrackedLog messages = 1;
 }
 
 message TrackLogsResponse {
@@ -64,7 +64,7 @@ message TrackMessagesResponse {
 /*
  * Inspection
  */
-message InspectionReport
+message TrackedState
 {
 	string actor_id = 1;
 	int64  millis_from_epoch = 2;
@@ -73,13 +73,13 @@ message InspectionReport
 	repeated string warnings = 5;
 }
 
-message TrackInspectionResponse 
+message TrackStateResponse 
 {
 }
 
-message InspectionReportMap
+message TrackedStateMap
 {
-    map<string, InspectionReport> reports = 1;
+    map<string, TrackedState> reports = 1;
 }
 
 message ClearRequest {}
@@ -89,5 +89,5 @@ service SherlockService {
 	rpc Clear(ClearRequest) returns (ClearResponse);
     rpc TrackLogs (stream LogBatch) returns (TrackLogsResponse);
     rpc TrackMessages (stream MessagesBatch) returns (TrackMessagesResponse);
-    rpc TrackInspection (stream InspectionReport) returns (TrackInspectionResponse);
+    rpc TrackState (stream TrackedState) returns (TrackStateResponse);
 }

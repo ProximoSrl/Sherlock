@@ -25,14 +25,14 @@ namespace Sherlock.Services {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg5TaGVybG9jay5wcm90bxIIU2hlcmxvY2saD3RpbWVzdGFtcC5wcm90byKc",
-            "AgoKTG9nTWVzc2FnZRItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJv",
+            "AgoKVHJhY2tlZExvZxItCgl0aW1lc3RhbXAYASABKAsyGi5nb29nbGUucHJv",
             "dG9idWYuVGltZXN0YW1wEi4KCGxvZ190eXBlGAIgASgOMhwuU2hlcmxvY2su",
-            "TG9nTWVzc2FnZS5Mb2dUeXBlEhAKCHNlcXVlbmNlGAMgASgEEg4KBmxvZ2dl",
+            "VHJhY2tlZExvZy5Mb2dUeXBlEhAKCHNlcXVlbmNlGAMgASgEEg4KBmxvZ2dl",
             "chgEIAEoCRIQCghhY3Rvcl9pZBgFIAEoCRIMCgR0ZXh0GAYgASgJEhYKDmV4",
             "Y2VwdGlvbl90eXBlGAcgASgJIlUKB0xvZ1R5cGUSCwoHVmVyYm9zZRAAEgkK",
             "BURlYnVnEAESDwoLSW5mb3JtYXRpb24QAhILCgdXYXJuaW5nEAMSCQoFRXJy",
             "b3IQBBIJCgVGYXRhbBAFIjIKCExvZ0JhdGNoEiYKCG1lc3NhZ2VzGAEgAygL",
-            "MhQuU2hlcmxvY2suTG9nTWVzc2FnZSITChFUcmFja0xvZ3NSZXNwb25zZSK7",
+            "MhQuU2hlcmxvY2suVHJhY2tlZExvZyITChFUcmFja0xvZ3NSZXNwb25zZSK7",
             "AgoOVHJhY2tlZE1lc3NhZ2USEAoIc2VxdWVuY2UYASABKAQSGQoRbWlsbGlz",
             "X2Zyb21fZXBvY2gYAiABKAMSDgoGc2VuZGVyGAMgASgJEg4KBnRhcmdldBgE",
             "IAEoCRI1CglkaXJlY3Rpb24YBSABKA4yIi5TaGVybG9jay5UcmFja2VkTWVz",
@@ -41,36 +41,35 @@ namespace Sherlock.Services {
             "CgxNZXNzYWdlRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4",
             "ASIrCglEaXJlY3Rpb24SDQoJVW5kZWZpbmVkEAASBgoCSW4QARIHCgNPdXQQ",
             "AiI7Cg1NZXNzYWdlc0JhdGNoEioKCG1lc3NhZ2VzGAEgAygLMhguU2hlcmxv",
-            "Y2suVHJhY2tlZE1lc3NhZ2UiFwoVVHJhY2tNZXNzYWdlc1Jlc3BvbnNlIsgB",
-            "ChBJbnNwZWN0aW9uUmVwb3J0EhAKCGFjdG9yX2lkGAEgASgJEhkKEW1pbGxp",
-            "c19mcm9tX2Vwb2NoGAIgASgDEjYKBnN0YXR1cxgDIAMoCzImLlNoZXJsb2Nr",
-            "Lkluc3BlY3Rpb25SZXBvcnQuU3RhdHVzRW50cnkSDgoGY2hpbGRzGAQgAygJ",
-            "EhAKCHdhcm5pbmdzGAUgAygJGi0KC1N0YXR1c0VudHJ5EgsKA2tleRgBIAEo",
-            "CRINCgV2YWx1ZRgCIAEoCToCOAEiGQoXVHJhY2tJbnNwZWN0aW9uUmVzcG9u",
-            "c2UingEKE0luc3BlY3Rpb25SZXBvcnRNYXASOwoHcmVwb3J0cxgBIAMoCzIq",
-            "LlNoZXJsb2NrLkluc3BlY3Rpb25SZXBvcnRNYXAuUmVwb3J0c0VudHJ5GkoK",
-            "DFJlcG9ydHNFbnRyeRILCgNrZXkYASABKAkSKQoFdmFsdWUYAiABKAsyGi5T",
-            "aGVybG9jay5JbnNwZWN0aW9uUmVwb3J0OgI4ASIOCgxDbGVhclJlcXVlc3Qi",
-            "DwoNQ2xlYXJSZXNwb25zZTKsAgoPU2hlcmxvY2tTZXJ2aWNlEjgKBUNsZWFy",
-            "EhYuU2hlcmxvY2suQ2xlYXJSZXF1ZXN0GhcuU2hlcmxvY2suQ2xlYXJSZXNw",
-            "b25zZRI+CglUcmFja0xvZ3MSEi5TaGVybG9jay5Mb2dCYXRjaBobLlNoZXJs",
-            "b2NrLlRyYWNrTG9nc1Jlc3BvbnNlKAESSwoNVHJhY2tNZXNzYWdlcxIXLlNo",
-            "ZXJsb2NrLk1lc3NhZ2VzQmF0Y2gaHy5TaGVybG9jay5UcmFja01lc3NhZ2Vz",
-            "UmVzcG9uc2UoARJSCg9UcmFja0luc3BlY3Rpb24SGi5TaGVybG9jay5JbnNw",
-            "ZWN0aW9uUmVwb3J0GiEuU2hlcmxvY2suVHJhY2tJbnNwZWN0aW9uUmVzcG9u",
-            "c2UoAUIUqgIRU2hlcmxvY2suU2VydmljZXNiBnByb3RvMw=="));
+            "Y2suVHJhY2tlZE1lc3NhZ2UiFwoVVHJhY2tNZXNzYWdlc1Jlc3BvbnNlIsAB",
+            "CgxUcmFja2VkU3RhdGUSEAoIYWN0b3JfaWQYASABKAkSGQoRbWlsbGlzX2Zy",
+            "b21fZXBvY2gYAiABKAMSMgoGc3RhdHVzGAMgAygLMiIuU2hlcmxvY2suVHJh",
+            "Y2tlZFN0YXRlLlN0YXR1c0VudHJ5Eg4KBmNoaWxkcxgEIAMoCRIQCgh3YXJu",
+            "aW5ncxgFIAMoCRotCgtTdGF0dXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFs",
+            "dWUYAiABKAk6AjgBIhQKElRyYWNrU3RhdGVSZXNwb25zZSKSAQoPVHJhY2tl",
+            "ZFN0YXRlTWFwEjcKB3JlcG9ydHMYASADKAsyJi5TaGVybG9jay5UcmFja2Vk",
+            "U3RhdGVNYXAuUmVwb3J0c0VudHJ5GkYKDFJlcG9ydHNFbnRyeRILCgNrZXkY",
+            "ASABKAkSJQoFdmFsdWUYAiABKAsyFi5TaGVybG9jay5UcmFja2VkU3RhdGU6",
+            "AjgBIg4KDENsZWFyUmVxdWVzdCIPCg1DbGVhclJlc3BvbnNlMp4CCg9TaGVy",
+            "bG9ja1NlcnZpY2USOAoFQ2xlYXISFi5TaGVybG9jay5DbGVhclJlcXVlc3Qa",
+            "Fy5TaGVybG9jay5DbGVhclJlc3BvbnNlEj4KCVRyYWNrTG9ncxISLlNoZXJs",
+            "b2NrLkxvZ0JhdGNoGhsuU2hlcmxvY2suVHJhY2tMb2dzUmVzcG9uc2UoARJL",
+            "Cg1UcmFja01lc3NhZ2VzEhcuU2hlcmxvY2suTWVzc2FnZXNCYXRjaBofLlNo",
+            "ZXJsb2NrLlRyYWNrTWVzc2FnZXNSZXNwb25zZSgBEkQKClRyYWNrU3RhdGUS",
+            "Fi5TaGVybG9jay5UcmFja2VkU3RhdGUaHC5TaGVybG9jay5UcmFja1N0YXRl",
+            "UmVzcG9uc2UoAUIUqgIRU2hlcmxvY2suU2VydmljZXNiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.LogMessage), global::Sherlock.Services.LogMessage.Parser, new[]{ "Timestamp", "LogType", "Sequence", "Logger", "ActorId", "Text", "ExceptionType" }, null, new[]{ typeof(global::Sherlock.Services.LogMessage.Types.LogType) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedLog), global::Sherlock.Services.TrackedLog.Parser, new[]{ "Timestamp", "LogType", "Sequence", "Logger", "ActorId", "Text", "ExceptionType" }, null, new[]{ typeof(global::Sherlock.Services.TrackedLog.Types.LogType) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.LogBatch), global::Sherlock.Services.LogBatch.Parser, new[]{ "Messages" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackLogsResponse), global::Sherlock.Services.TrackLogsResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedMessage), global::Sherlock.Services.TrackedMessage.Parser, new[]{ "Sequence", "MillisFromEpoch", "Sender", "Target", "Direction", "Message", "ActorId" }, null, new[]{ typeof(global::Sherlock.Services.TrackedMessage.Types.Direction) }, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.MessagesBatch), global::Sherlock.Services.MessagesBatch.Parser, new[]{ "Messages" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackMessagesResponse), global::Sherlock.Services.TrackMessagesResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.InspectionReport), global::Sherlock.Services.InspectionReport.Parser, new[]{ "ActorId", "MillisFromEpoch", "Status", "Childs", "Warnings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackInspectionResponse), global::Sherlock.Services.TrackInspectionResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.InspectionReportMap), global::Sherlock.Services.InspectionReportMap.Parser, new[]{ "Reports" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedState), global::Sherlock.Services.TrackedState.Parser, new[]{ "ActorId", "MillisFromEpoch", "Status", "Childs", "Warnings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackStateResponse), global::Sherlock.Services.TrackStateResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedStateMap), global::Sherlock.Services.TrackedStateMap.Parser, new[]{ "Reports" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.ClearRequest), global::Sherlock.Services.ClearRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.ClearResponse), global::Sherlock.Services.ClearResponse.Parser, null, null, null, null)
           }));
@@ -83,11 +82,11 @@ namespace Sherlock.Services {
   ///
   /// Log tracking
   /// </summary>
-  public sealed partial class LogMessage : pb::IMessage<LogMessage> {
-    private static readonly pb::MessageParser<LogMessage> _parser = new pb::MessageParser<LogMessage>(() => new LogMessage());
+  public sealed partial class TrackedLog : pb::IMessage<TrackedLog> {
+    private static readonly pb::MessageParser<TrackedLog> _parser = new pb::MessageParser<TrackedLog>(() => new TrackedLog());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<LogMessage> Parser { get { return _parser; } }
+    public static pb::MessageParser<TrackedLog> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -100,14 +99,14 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LogMessage() {
+    public TrackedLog() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LogMessage(LogMessage other) : this() {
+    public TrackedLog(TrackedLog other) : this() {
       Timestamp = other.timestamp_ != null ? other.Timestamp.Clone() : null;
       logType_ = other.logType_;
       sequence_ = other.sequence_;
@@ -119,8 +118,8 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public LogMessage Clone() {
-      return new LogMessage(this);
+    public TrackedLog Clone() {
+      return new TrackedLog(this);
     }
 
     /// <summary>Field number for the "timestamp" field.</summary>
@@ -136,9 +135,9 @@ namespace Sherlock.Services {
 
     /// <summary>Field number for the "log_type" field.</summary>
     public const int LogTypeFieldNumber = 2;
-    private global::Sherlock.Services.LogMessage.Types.LogType logType_ = 0;
+    private global::Sherlock.Services.TrackedLog.Types.LogType logType_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Sherlock.Services.LogMessage.Types.LogType LogType {
+    public global::Sherlock.Services.TrackedLog.Types.LogType LogType {
       get { return logType_; }
       set {
         logType_ = value;
@@ -202,11 +201,11 @@ namespace Sherlock.Services {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as LogMessage);
+      return Equals(other as TrackedLog);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(LogMessage other) {
+    public bool Equals(TrackedLog other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -310,7 +309,7 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(LogMessage other) {
+    public void MergeFrom(TrackedLog other) {
       if (other == null) {
         return;
       }
@@ -357,7 +356,7 @@ namespace Sherlock.Services {
             break;
           }
           case 16: {
-            logType_ = (global::Sherlock.Services.LogMessage.Types.LogType) input.ReadEnum();
+            logType_ = (global::Sherlock.Services.TrackedLog.Types.LogType) input.ReadEnum();
             break;
           }
           case 24: {
@@ -385,7 +384,7 @@ namespace Sherlock.Services {
     }
 
     #region Nested types
-    /// <summary>Container for nested types declared in the LogMessage message type.</summary>
+    /// <summary>Container for nested types declared in the TrackedLog message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
       public enum LogType {
@@ -438,11 +437,11 @@ namespace Sherlock.Services {
 
     /// <summary>Field number for the "messages" field.</summary>
     public const int MessagesFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Sherlock.Services.LogMessage> _repeated_messages_codec
-        = pb::FieldCodec.ForMessage(10, global::Sherlock.Services.LogMessage.Parser);
-    private readonly pbc::RepeatedField<global::Sherlock.Services.LogMessage> messages_ = new pbc::RepeatedField<global::Sherlock.Services.LogMessage>();
+    private static readonly pb::FieldCodec<global::Sherlock.Services.TrackedLog> _repeated_messages_codec
+        = pb::FieldCodec.ForMessage(10, global::Sherlock.Services.TrackedLog.Parser);
+    private readonly pbc::RepeatedField<global::Sherlock.Services.TrackedLog> messages_ = new pbc::RepeatedField<global::Sherlock.Services.TrackedLog>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::Sherlock.Services.LogMessage> Messages {
+    public pbc::RepeatedField<global::Sherlock.Services.TrackedLog> Messages {
       get { return messages_; }
     }
 
@@ -1156,11 +1155,11 @@ namespace Sherlock.Services {
   ///
   /// Inspection
   /// </summary>
-  public sealed partial class InspectionReport : pb::IMessage<InspectionReport> {
-    private static readonly pb::MessageParser<InspectionReport> _parser = new pb::MessageParser<InspectionReport>(() => new InspectionReport());
+  public sealed partial class TrackedState : pb::IMessage<TrackedState> {
+    private static readonly pb::MessageParser<TrackedState> _parser = new pb::MessageParser<TrackedState>(() => new TrackedState());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<InspectionReport> Parser { get { return _parser; } }
+    public static pb::MessageParser<TrackedState> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1173,14 +1172,14 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReport() {
+    public TrackedState() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReport(InspectionReport other) : this() {
+    public TrackedState(TrackedState other) : this() {
       actorId_ = other.actorId_;
       millisFromEpoch_ = other.millisFromEpoch_;
       status_ = other.status_.Clone();
@@ -1190,8 +1189,8 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReport Clone() {
-      return new InspectionReport(this);
+    public TrackedState Clone() {
+      return new TrackedState(this);
     }
 
     /// <summary>Field number for the "actor_id" field.</summary>
@@ -1248,11 +1247,11 @@ namespace Sherlock.Services {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as InspectionReport);
+      return Equals(other as TrackedState);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(InspectionReport other) {
+    public bool Equals(TrackedState other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1323,7 +1322,7 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(InspectionReport other) {
+    public void MergeFrom(TrackedState other) {
       if (other == null) {
         return;
       }
@@ -1373,11 +1372,11 @@ namespace Sherlock.Services {
 
   }
 
-  public sealed partial class TrackInspectionResponse : pb::IMessage<TrackInspectionResponse> {
-    private static readonly pb::MessageParser<TrackInspectionResponse> _parser = new pb::MessageParser<TrackInspectionResponse>(() => new TrackInspectionResponse());
+  public sealed partial class TrackStateResponse : pb::IMessage<TrackStateResponse> {
+    private static readonly pb::MessageParser<TrackStateResponse> _parser = new pb::MessageParser<TrackStateResponse>(() => new TrackStateResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<TrackInspectionResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<TrackStateResponse> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1390,29 +1389,29 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TrackInspectionResponse() {
+    public TrackStateResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TrackInspectionResponse(TrackInspectionResponse other) : this() {
+    public TrackStateResponse(TrackStateResponse other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public TrackInspectionResponse Clone() {
-      return new TrackInspectionResponse(this);
+    public TrackStateResponse Clone() {
+      return new TrackStateResponse(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as TrackInspectionResponse);
+      return Equals(other as TrackStateResponse);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(TrackInspectionResponse other) {
+    public bool Equals(TrackStateResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1453,7 +1452,7 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(TrackInspectionResponse other) {
+    public void MergeFrom(TrackStateResponse other) {
       if (other == null) {
         return;
       }
@@ -1474,11 +1473,11 @@ namespace Sherlock.Services {
 
   }
 
-  public sealed partial class InspectionReportMap : pb::IMessage<InspectionReportMap> {
-    private static readonly pb::MessageParser<InspectionReportMap> _parser = new pb::MessageParser<InspectionReportMap>(() => new InspectionReportMap());
+  public sealed partial class TrackedStateMap : pb::IMessage<TrackedStateMap> {
+    private static readonly pb::MessageParser<TrackedStateMap> _parser = new pb::MessageParser<TrackedStateMap>(() => new TrackedStateMap());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<InspectionReportMap> Parser { get { return _parser; } }
+    public static pb::MessageParser<TrackedStateMap> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -1491,40 +1490,40 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReportMap() {
+    public TrackedStateMap() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReportMap(InspectionReportMap other) : this() {
+    public TrackedStateMap(TrackedStateMap other) : this() {
       reports_ = other.reports_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReportMap Clone() {
-      return new InspectionReportMap(this);
+    public TrackedStateMap Clone() {
+      return new TrackedStateMap(this);
     }
 
     /// <summary>Field number for the "reports" field.</summary>
     public const int ReportsFieldNumber = 1;
-    private static readonly pbc::MapField<string, global::Sherlock.Services.InspectionReport>.Codec _map_reports_codec
-        = new pbc::MapField<string, global::Sherlock.Services.InspectionReport>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Sherlock.Services.InspectionReport.Parser), 10);
-    private readonly pbc::MapField<string, global::Sherlock.Services.InspectionReport> reports_ = new pbc::MapField<string, global::Sherlock.Services.InspectionReport>();
+    private static readonly pbc::MapField<string, global::Sherlock.Services.TrackedState>.Codec _map_reports_codec
+        = new pbc::MapField<string, global::Sherlock.Services.TrackedState>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForMessage(18, global::Sherlock.Services.TrackedState.Parser), 10);
+    private readonly pbc::MapField<string, global::Sherlock.Services.TrackedState> reports_ = new pbc::MapField<string, global::Sherlock.Services.TrackedState>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::MapField<string, global::Sherlock.Services.InspectionReport> Reports {
+    public pbc::MapField<string, global::Sherlock.Services.TrackedState> Reports {
       get { return reports_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as InspectionReportMap);
+      return Equals(other as TrackedStateMap);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(InspectionReportMap other) {
+    public bool Equals(TrackedStateMap other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1569,7 +1568,7 @@ namespace Sherlock.Services {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(InspectionReportMap other) {
+    public void MergeFrom(TrackedStateMap other) {
       if (other == null) {
         return;
       }

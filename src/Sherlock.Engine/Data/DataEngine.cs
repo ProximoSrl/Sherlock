@@ -59,16 +59,16 @@ namespace Sherlock.Engine.Data
 
         public string[] GetClients() => _roots.Keys.ToArray();
 
-        public async Task<InspectionReportMap> GetReportAsync(string clientId)
+        public async Task<TrackedStateMap> GetReportAsync(string clientId)
         {
             if (clientId != null && _roots.TryGetValue(clientId, out var node))
             {
-                return await node.RequestAsync<InspectionReportMap>(new QueryReports()).ConfigureAwait(false);
+                return await node.RequestAsync<TrackedStateMap>(new QueryReports()).ConfigureAwait(false);
             }
 
-            var report = new InspectionReportMap();
+            var report = new TrackedStateMap();
 
-            var inspectionReport = new InspectionReport
+            var inspectionReport = new TrackedState
             {
                 ActorId = "demoapp/demo"
             };

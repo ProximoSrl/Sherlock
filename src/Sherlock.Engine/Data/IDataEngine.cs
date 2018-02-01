@@ -12,7 +12,7 @@ namespace Sherlock.Engine.Data
         void ProcessBatch(string clientId, IEnumerable<object> messages);
 
         string[] GetClients();
-        Task<InspectionReportMap> GetReportAsync(string clientId);
+        Task<TrackedStateMap> GetReportAsync(string clientId);
         Task<LogsAndMessagesData> GetDataAsync(string clientId, string actorId);
         void Clear(string clientId);
     }

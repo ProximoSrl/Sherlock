@@ -10,21 +10,21 @@ namespace Sherlock.Engine.Data
 {
     public class ActorTwin : IActor
     {
-        private readonly FixedLenQueue<LogMessage> _logs = new FixedLenQueue<LogMessage>(100);
+        private readonly FixedLenQueue<TrackedLog> _logs = new FixedLenQueue<TrackedLog>(100);
         private readonly FixedLenQueue<TrackedMessage> _messages = new FixedLenQueue<TrackedMessage>(100);
-        private InspectionReport _state;
+        private TrackedState _state;
 
         public Task ReceiveAsync(IContext context)
         {
             switch (context.Message)
             {
-                case LogMessage log:
+                case TrackedLog log:
                 {
                     _logs.Add(log);
                     break;
                 }
 
-                case InspectionReport report:
+                case TrackedState report:
                 {
                     _state = report;
                     break;

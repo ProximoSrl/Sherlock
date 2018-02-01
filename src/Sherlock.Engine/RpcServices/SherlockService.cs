@@ -45,8 +45,8 @@ namespace Sherlock.Engine.RpcServices
             return new TrackMessagesResponse();
         }
 
-        public override async Task<TrackInspectionResponse> TrackInspection(
-            IAsyncStreamReader<InspectionReport> requestStream, ServerCallContext context)
+        public override async Task<TrackStateResponse> TrackState(
+            IAsyncStreamReader<TrackedState> requestStream, ServerCallContext context)
         {
             var clientId = context.RequestHeaders.FirstOrDefault(x => x.Key == SherlockConstants.ClientId)?.Value;
 
@@ -55,7 +55,7 @@ namespace Sherlock.Engine.RpcServices
                 _engine.ProcessSingle(clientId, requestStream.Current);
             }
 
-            return new TrackInspectionResponse();
+            return new TrackStateResponse();
         }
 
         public override Task<ClearResponse> Clear(ClearRequest request, ServerCallContext context)

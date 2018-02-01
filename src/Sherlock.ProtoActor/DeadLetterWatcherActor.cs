@@ -35,7 +35,7 @@ namespace Sherlock.ProtoActor
             return Actor.Done;
         }
 
-        protected override void OnReport(IInspectionReport report)
+        protected override void ReportState(ITrackedState report)
         {
             report.Guard(() => _counter == 0, $"Found {_counter} dead letters");
         }

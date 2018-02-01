@@ -34,7 +34,7 @@ namespace Sherlock.ProtoActor.Messages {
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.ProtoActor.Messages.AddToInspection), global::Sherlock.ProtoActor.Messages.AddToInspection.Parser, new[]{ "ActorId" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.ProtoActor.Messages.Inspect), global::Sherlock.ProtoActor.Messages.Inspect.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.ProtoActor.Messages.InspectionReportRequest), global::Sherlock.ProtoActor.Messages.InspectionReportRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.ProtoActor.Messages.ReportState), global::Sherlock.ProtoActor.Messages.ReportState.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.ProtoActor.Messages.MonkeyCrash), global::Sherlock.ProtoActor.Messages.MonkeyCrash.Parser, new[]{ "CrashType", "Message" }, null, new[]{ typeof(global::Sherlock.ProtoActor.Messages.MonkeyCrash.Types.CrashType) }, null)
           }));
     }
@@ -254,10 +254,10 @@ namespace Sherlock.ProtoActor.Messages {
 
   }
 
-  public sealed partial class InspectionReportRequest : pb::IMessage<InspectionReportRequest> {
-    private static readonly pb::MessageParser<InspectionReportRequest> _parser = new pb::MessageParser<InspectionReportRequest>(() => new InspectionReportRequest());
+  public sealed partial class ReportState : pb::IMessage<ReportState> {
+    private static readonly pb::MessageParser<ReportState> _parser = new pb::MessageParser<ReportState>(() => new ReportState());
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<InspectionReportRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<ReportState> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -270,28 +270,28 @@ namespace Sherlock.ProtoActor.Messages {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReportRequest() {
+    public ReportState() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReportRequest(InspectionReportRequest other) : this() {
+    public ReportState(ReportState other) : this() {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public InspectionReportRequest Clone() {
-      return new InspectionReportRequest(this);
+    public ReportState Clone() {
+      return new ReportState(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as InspectionReportRequest);
+      return Equals(other as ReportState);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(InspectionReportRequest other) {
+    public bool Equals(ReportState other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -323,7 +323,7 @@ namespace Sherlock.ProtoActor.Messages {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(InspectionReportRequest other) {
+    public void MergeFrom(ReportState other) {
       if (other == null) {
         return;
       }
