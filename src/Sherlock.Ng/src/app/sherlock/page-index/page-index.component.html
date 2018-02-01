@@ -1,8 +1,22 @@
-<mat-card *ngFor="let client of clients">
-  <mat-card-title>
-    {{client}}
-  </mat-card-title>
-  <mat-card-content>
-    <a mat-button [routerLink]=" ['../actors', client] ">show</a>
-  </mat-card-content>
-</mat-card>
+<div *ngIf="clients && clients.length > 0">
+  <mat-card *ngFor="let client of clients">
+    <mat-card-title>
+      {{client}}
+    </mat-card-title>
+    <mat-card-content>
+      <a mat-button [routerLink]=" ['../actors', client] ">show</a>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div *ngIf="!clients || clients.length === 0">
+  <mat-card>
+    <mat-card-title>
+      Awaiting clients
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        Connect a client and hit refresh
+      </p>
+    </mat-card-content>
+  </mat-card>>
+</div>

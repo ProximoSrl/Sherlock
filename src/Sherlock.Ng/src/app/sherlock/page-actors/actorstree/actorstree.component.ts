@@ -55,8 +55,8 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
   private firstNode: string;
   private colors: { [key: string]: ICustomColors } = {
     'default': { background: 'green', text: 'white' },
-    'factory': { background: 'orangered', text: 'white' },
-    'data': { background: 'aliceblue', text: 'black' }
+    'cluster_1': { background: 'orangered', text: 'white' },
+    'cluster_2': { background: 'aliceblue', text: 'black' }
   };
 
   public constructor(private visNetworkService: VisNetworkService) { }

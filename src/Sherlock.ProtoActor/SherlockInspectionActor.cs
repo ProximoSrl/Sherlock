@@ -66,12 +66,10 @@ namespace Sherlock.ProtoActor
                         return;
                     }
 
-                    _logger.LogDebug("Sending inspection reports");
                     // send reports
                     try
                     {
                         await _client.PushAsync(_reports.Reports.Values).ConfigureAwait(false);
-                        _logger.LogDebug("Reports sent");
                     }
                     catch (RpcException ex )
                     {
@@ -83,7 +81,6 @@ namespace Sherlock.ProtoActor
                     }
 
                     // refresh reports
-                    _logger.LogDebug("Creating new inspection reports");
                     foreach (var t in _targets)
                     {
                         t.Request(Inspect.Instance, context.Self);
