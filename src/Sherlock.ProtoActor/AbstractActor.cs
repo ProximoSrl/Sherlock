@@ -29,7 +29,7 @@ namespace Sherlock.ProtoActor
 
         public Task ReceiveAsync(IContext context)
         {
-            using (LogContext.PushProperty("[Actor]Id", context.Self.ToShortString()))
+            using (LogContext.PushProperty("ActorId", context.Self.ToShortString()))
             {
                 return SherlockSettings.Enabled ?
                     TrackExecutionAsync(context) :
