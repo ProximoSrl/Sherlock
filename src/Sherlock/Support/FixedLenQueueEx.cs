@@ -54,7 +54,7 @@ namespace Sherlock.Support
         {
             T item = add((UInt32)Interlocked.Increment(ref _sequence));
 
-            while (_queue.Count > _maxLen)
+            while (_queue.Count >= _maxLen)
             {
                 _queue.TryDequeue(out T discarded);
             }

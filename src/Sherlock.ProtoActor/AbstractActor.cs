@@ -29,7 +29,7 @@ namespace Sherlock.ProtoActor
 
         public Task ReceiveAsync(IContext context)
         {
-            using (LogContext.PushProperty("ActorId", context.Self.ToShortString()))
+            using (LogContext.PushProperty("[Actor]Id", context.Self.ToShortString()))
             {
                 return SherlockSettings.Enabled ?
                     TrackExecutionAsync(context) :
@@ -105,7 +105,7 @@ namespace Sherlock.ProtoActor
             {
                 case Started _:
                 {
-                    Logger.LogDebug("Started");
+                    Logger.LogDebug("[Actor] Started");
                     __currentStatus = "Started";
                     __name = context.Self.ExtractName();
                     break;
@@ -113,14 +113,14 @@ namespace Sherlock.ProtoActor
 
                 case Stopping _:
                 {
-                    Logger.LogDebug("Stopping");
+                    Logger.LogDebug("[Actor] Stopping");
                     __currentStatus = "Stopping";
                     break;
                 }
 
                 case Stopped _:
                 {
-                    Logger.LogDebug("Stopped");
+                    Logger.LogDebug("[Actor] Stopped");
                     __currentStatus = "Stopped";
                     if (SherlockInspectionActor.Pid != null)
                     {
@@ -133,7 +133,7 @@ namespace Sherlock.ProtoActor
 
                 case Restart _:
                 {
-                    Logger.LogDebug("Restart");
+                    Logger.LogDebug("[Actor] Restart");
                     __restartCount++;
                     break;
                 }
