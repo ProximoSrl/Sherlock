@@ -41,7 +41,7 @@ namespace Sherlock.Support
     public class FixedLenQueueEx<T> : IEnumerable<T>
     {
         private readonly int _maxLen;
-        private readonly ConcurrentQueue<T> _queue;
+        private ConcurrentQueue<T> _queue;
         private long _sequence = 0;
 
         public FixedLenQueueEx(int maxLen)
@@ -72,7 +72,10 @@ namespace Sherlock.Support
         {
             return GetEnumerator();
         }
+
+        public void Clear()
+        {
+            _queue = new ConcurrentQueue<T>();
+        }
     }
-
-
 }
