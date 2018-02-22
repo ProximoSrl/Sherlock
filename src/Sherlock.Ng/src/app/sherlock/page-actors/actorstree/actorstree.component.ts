@@ -54,9 +54,13 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
   private map = new Map<string, ISherlockNode>();
   private firstNode: string;
   private colors: { [key: string]: ICustomColors } = {
-    'default': { background: 'green', text: 'white' },
-    'cluster_1': { background: 'orangered', text: 'white' },
-    'cluster_2': { background: 'aliceblue', text: 'black' }
+    'default': { background: 'lightgreen', text: 'black' },
+    'cluster_2': { background: 'darkviolet', text: 'white' },
+    'cluster_3': { background: '#53e8ed', text: 'black' },
+    'cluster_4': { background: '#00b0ff', text: 'white' },
+    'cluster_1': { background: 'darkgreen', text: 'white' },
+    'errors': { background: 'darkred', text: 'white' },
+    'warnings': { background: 'orangered', text: 'white' },
   };
 
   public constructor(private visNetworkService: VisNetworkService) { }
@@ -193,23 +197,23 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   setColor(info: ActorNode, node: ISherlockNode, group: string): void {
-    const groupSettings = this.colors[group] || { background: 'green', text: 'white' };
-    let back = groupSettings.background;
-
-    if (node.status['kernel::status'] === 'Stopped') {
-      back = 'darkred';
-    }
 
     if (node.warnings.length > 0) {
-      back = 'orangered';
+      group = 'warnings';
     }
+
+    if (node.status['kernel::status'] === 'Stopped') {
+      group = 'errors';
+    }
+
+    const groupSettings = this.colors[group] || { background: 'green', text: 'white' };
 
     const color: Color = {
       border: 'darkgray',
-      background: back,
+      background: groupSettings.background,
       highlight: {
         border: '#7BE141',
-        background: back
+        background: groupSettings.background
       }
     };
 
