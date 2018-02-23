@@ -11,6 +11,7 @@ namespace Sherlock.Services
         ITrackedState Add(string key, TimeSpan timeSpan);
         ITrackedState Add(string key, long counter);
         ITrackedState Add(string key, bool value);
+        ITrackedState Add(string key, DateTime value);
         ITrackedState Guard(Func<bool> conditions, string message);
     }
     
@@ -48,6 +49,11 @@ namespace Sherlock.Services
         public ITrackedState Add(string key, bool value)
         {
             return Add(key, value.ToString());
+        }
+
+        public ITrackedState Add(string key, DateTime value)
+        {
+            return Add(key, value.ToString("O"));
         }
 
         public ITrackedState Guard(Func<bool> conditions, string message)

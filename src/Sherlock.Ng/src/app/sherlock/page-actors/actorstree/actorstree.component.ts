@@ -120,6 +120,10 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
       },
       edges: {
         width: 1
+      },
+      interaction: {
+        navigationButtons: true,
+        keyboard: true
       }
     };
   }
@@ -170,7 +174,7 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
       }
     }
 
-    nodeinfo.childsNodes.forEach(element => {
+    nodeinfo.childsNodes.sort((a, b) => this.getLabel(a).localeCompare(this.getLabel(b))).forEach(element => {
       this.recursiveBuildNetwork(element, group);
       const edge: SherlockEdge = {
         from: nodeinfo.id,
