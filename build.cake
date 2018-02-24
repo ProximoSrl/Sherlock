@@ -1,3 +1,5 @@
+#addin "Cake.Yarn"
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -5,11 +7,8 @@
 var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
 var artifactsDir = Directory("./artifacts");
+var uiPath  = MakeAbsolute(Directory("./src/Sherlock.Ng/"));
 
-FilePath        ngPath      = Context.Tools.Resolve("ng.cmd");
-FilePath        yarnPath     = Context.Tools.Resolve("yarn.cmd");
-DirectoryPath   outputPath  = MakeAbsolute( artifactsDir + Directory("wwwroot"));
-DirectoryPath   uiPath  = MakeAbsolute(Directory("./src/Sherlock.Ng/"));
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
 ///////////////////////////////////////////////////////////////////////////////
@@ -27,40 +26,13 @@ Teardown(ctx =>
 });
 
 ///////////////////////////////////////////////////////////////////////////////
-// Helpers
-///////////////////////////////////////////////////////////////////////////////
-Action<FilePath, ProcessArgumentBuilder, DirectoryPath> ExecuteInDirectory => (path, args, directory) => {
-    var result = StartProcess(
-        path,
-        new ProcessSettings {
-            Arguments = args,
-            WorkingDirectory = directory
-        });
-
-    if(0 != result)
-    {
-        throw new Exception($"Failed to execute tool {path.GetFilename()} ({result})");
-    }
-};
-
-///////////////////////////////////////////////////////////////////////////////
 // TASKS
 ///////////////////////////////////////////////////////////////////////////////
-
-Task("yarn::install")
-    .Does( ()=> {
-    ExecuteInDirectory(
-        yarnPath,
-        new ProcessArgumentBuilder().Append("install"),
-        uiPath
-    );
-});
 
 Task("Clean")
 .Does(()=>{
      CleanDirectory(artifactsDir);
 });
-
 
 Task("Build")
 .Does(()=>{
@@ -78,18 +50,9 @@ Task("Host::Publish")
 });
 
 Task("Ui::Publish")
-.IsDependentOn("yarn::install")
 .Does(()=>{
-    ExecuteInDirectory(
-        ngPath,
-        new ProcessArgumentBuilder()
-            .Append("build")
-            .Append("--prod")
-            .Append("--build-optimizer")
-            .Append("--output-path")
-            .AppendQuoted(outputPath.FullPath),
-        uiPath
-    );
+    Yarn.FromPath(uiPath).Install();
+    Yarn.FromPath(uiPath).RunScript("prodbuild");
 });
 
 Task("Publish")

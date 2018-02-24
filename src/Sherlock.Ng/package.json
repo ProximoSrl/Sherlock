@@ -6,6 +6,7 @@
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.js",
     "build": "ng build",
+    "prodbuild": "ng build --prod --build-optimizer --output-path ../../artifacts/wwwroot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
