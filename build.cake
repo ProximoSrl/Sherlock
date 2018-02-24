@@ -2,7 +2,7 @@
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
 
-var target = Argument("target", "Default");
+var target = Argument("target", "Publish");
 var configuration = Argument("configuration", "Release");
 var artifactsDir = Directory("./artifacts");
 
@@ -98,13 +98,6 @@ Task("Publish")
     .IsDependentOn("Host::Publish")
 .Does(() => {
    Information("Published on " + artifactsDir);
-});
-
-
-Task("Default")
-.IsDependentOn("Build")
-.Does(() => {
-   Information("Hello Cake!");
 });
 
 RunTarget(target);
