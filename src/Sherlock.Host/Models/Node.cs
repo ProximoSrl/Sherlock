@@ -10,6 +10,7 @@ namespace Sherlock.Host.Models
     {
         static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         private readonly List<Node> _childNodes = new List<Node>();
+        private readonly List<string> _knownChilds;
 
         public string Id { get; private set; }
         public NavigationLink Parent { get; set; }
@@ -46,6 +47,7 @@ namespace Sherlock.Host.Models
             }
 
             this.Warnings = report.Warnings.ToList();
+            this._knownChilds = report.Childs.ToList();
         }
 
         public void Add(Node node)
@@ -65,6 +67,20 @@ namespace Sherlock.Host.Models
             foreach (var msg in messages)
             {
                 TrackedMessages.Add(msg.ToDictionary());
+            }
+        }
+
+        public void DetectGhosts()
+        {
+            if (ChildsNodes == null || _knownChilds == null || _knownChilds.Count == 0)
+                return;
+
+            var ghosts = _knownChilds.Except(ChildsNodes.Select(x => x.Id));
+
+            foreach (var child in ghosts)
+            {
+                var ghostChild = new Node(child, false);
+//                Add(ghostChild);
             }
         }
     }

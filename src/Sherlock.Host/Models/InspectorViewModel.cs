@@ -49,6 +49,7 @@ namespace Sherlock.Host.Models
             foreach (var node in _map.Values.Union(new[] { _root }))
             {
                 node.CreateNodeLinks(urlmapper);
+                node.DetectGhosts();
             }
         }
 
