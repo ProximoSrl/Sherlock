@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Sherlock.Serilog;
 using Sherlock.Services;
 using TrackedLog = Sherlock.Services.TrackedLog;
 
@@ -18,7 +17,6 @@ namespace Sherlock.Host.Models
 
         public IDictionary<string, string> Status { get; private set; }
         public IList<IDictionary<string, string>> TrackedMessages { get; private set; }
-        public TrackedMessage[] Messages { get; set; }
         public IList<string> Warnings { get; private set; }
         public IEnumerable<Node> ChildsNodes { get; private set; }
         public DateTime Timestamp { get; private set; }

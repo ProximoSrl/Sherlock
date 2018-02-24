@@ -13,6 +13,18 @@ using Sherlock.Services;
 
 namespace Sherlock.ProtoActor
 {
+    public class SherlockInspectionOptions
+    {
+        public int StartupDelayMilliseconds { get; set; }
+        public int IntervalMilliseconds { get; set; }
+
+        public SherlockInspectionOptions()
+        {
+            this.StartupDelayMilliseconds = 5000;
+            this.IntervalMilliseconds = 5000;
+        }
+    }
+
     public class SherlockInspectionActor : IActor
     {
         private readonly ISimpleScheduler _scheduler;
@@ -21,12 +33,18 @@ namespace Sherlock.ProtoActor
         public static PID Pid { get; private set; }
         private readonly HashSet<PID> _targets = new HashSet<PID>();
         private readonly ISherlockClient _client;
+        private readonly SherlockInspectionOptions _options;
         private readonly ILogger _logger = Proto.Log.CreateLogger<SherlockInspectionActor>();
 
-        public SherlockInspectionActor(ISimpleScheduler scheduler, ISherlockClient client)
+        public SherlockInspectionActor(
+            ISimpleScheduler scheduler,
+            ISherlockClient client,
+            SherlockInspectionOptions options
+        )
         {
             _scheduler = scheduler;
             _client = client;
+            _options = options;
         }
 
         public async Task ReceiveAsync(IContext context)
@@ -37,8 +55,8 @@ namespace Sherlock.ProtoActor
                 {
                     SherlockInspectionActor.Pid = context.Self;
                     _scheduler.ScheduleTellRepeatedly(
-                        TimeSpan.FromSeconds(5),
-                        TimeSpan.FromSeconds(5),
+                        TimeSpan.FromMilliseconds(_options.StartupDelayMilliseconds),
+                        TimeSpan.FromMilliseconds(_options.IntervalMilliseconds),
                         context.Self,
                         Inspect.Instance,
                         out _cts
@@ -71,7 +89,7 @@ namespace Sherlock.ProtoActor
                     {
                         await _client.PushAsync(_reports.Reports.Values).ConfigureAwait(false);
                     }
-                    catch (RpcException ex )
+                    catch (RpcException ex)
                     {
                         _logger.LogDebug("Sherlock server connection error: {message}", ex.Message);
                         if (ex.Status.StatusCode != StatusCode.Unavailable)

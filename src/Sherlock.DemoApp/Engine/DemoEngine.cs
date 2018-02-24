@@ -1,6 +1,7 @@
 ﻿using Proto;
 using Proto.Schedulers.SimpleScheduler;
 using Sherlock.Client;
+using Sherlock.ProtoActor;
 using Sherlock.ProtoActor.Messages;
 
 namespace Sherlock.DemoApp.Engine
@@ -15,8 +16,15 @@ namespace Sherlock.DemoApp.Engine
             var props = Actor.FromProducer(() => new DemoRootActor());
             _root = Actor.SpawnNamed(props, "Demo");
 
-            _sherlock = Actor.SpawnNamed(
-                Actor.FromProducer(() => new ProtoActor.SherlockInspectionActor(new SimpleScheduler(), client)),
+            _sherlock = Actor.SpawnNamed
+            (
+                Actor.FromProducer
+                (() => new ProtoActor.SherlockInspectionActor(
+                       new SimpleScheduler(),
+                       client,
+                       new SherlockInspectionOptions()
+                   )
+                ), 
                 "Sherlock"
             );
 
