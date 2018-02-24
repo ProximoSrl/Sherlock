@@ -34,14 +34,14 @@ namespace Sherlock.Host.Controllers
 
             var report = await _engine.GetReportAsync(clientId).ConfigureAwait(false);
 
-            var model = new InspectorViewModel(report, x => Url.RouteUrl(
+            var builder = new NodeViewModelBuilder(id, report, x => Url.RouteUrl(
                 "ReportByPath",
                 new { id = x },
                 "",
                 Request.Host.ToUriComponent()
-            ), false);
+            ));
 
-            var node = model.ByPath(id);
+            var node = builder.Node;
 
             if (node != null)
             {

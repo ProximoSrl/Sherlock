@@ -70,7 +70,7 @@ namespace Sherlock.Host.Models
             }
         }
 
-        public void DetectGhosts()
+        public void DetectGhosts(Func<string, string> urlmapper)
         {
             if (ChildsNodes == null || _knownChilds == null || _knownChilds.Count == 0)
                 return;
@@ -79,9 +79,32 @@ namespace Sherlock.Host.Models
 
             foreach (var child in ghosts)
             {
-                var ghostChild = new Node(child, false);
-//                Add(ghostChild);
+                var ghostChild = new GhostNode(child)
+                {
+                    Parent = new NavigationLink(this.Id, urlmapper(this.Id))
+                };
+
+                Add(ghostChild);
             }
+        }
+    }
+
+    /// <summary>
+    /// Ghost node is a node representing a known actor without tracking infos.
+    /// Likely a stalled actor.
+    /// </summary>
+    public class GhostNode : Node
+    {
+        public GhostNode(string id) : base(id, false)
+        {
+            int start = id.LastIndexOf("/");
+            if (start != -1)
+            {
+                InternalState.Add("kernel::name", id.Substring(start + 1));
+            }
+
+            InternalState.Add("kernel::actorType", "is.unknown");
+            InternalState.Add("kernel::status", "Stalled");
         }
     }
 }

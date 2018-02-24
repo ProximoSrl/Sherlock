@@ -5,6 +5,36 @@ using Sherlock.Services;
 
 namespace Sherlock.Host.Models
 {
+    public class NodeViewModelBuilder
+    {
+        public Node Node { get; private set; }
+
+        public NodeViewModelBuilder(
+            string nodeId,
+            TrackedStateMap map,
+            Func<string, string> urlmapper,
+            Action<Node> action = null
+            )
+        {
+            var found = map.Reports.Values.FirstOrDefault(x=> x.ActorId == nodeId);
+
+            if (found != null)
+            {
+                this.Node = new Node(found, false);
+            }
+            else
+            {
+                var parentOf = map.Reports.Values.FirstOrDefault(x => x.Childs.Contains(nodeId));
+                if (parentOf != null)
+                {
+                    this.Node = new GhostNode(nodeId);
+                }
+            }
+
+            action?.Invoke(this.Node);
+        }
+    }
+
     public class InspectorViewModel
     {
         private readonly Node _root;
@@ -48,8 +78,8 @@ namespace Sherlock.Host.Models
 
             foreach (var node in _map.Values.Union(new[] { _root }))
             {
+                node.DetectGhosts(urlmapper);
                 node.CreateNodeLinks(urlmapper);
-                node.DetectGhosts();
             }
         }
 

@@ -61,6 +61,7 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
     'cluster_1': { background: 'darkgreen', text: 'white' },
     'errors': { background: 'darkred', text: 'white' },
     'warnings': { background: 'orangered', text: 'white' },
+    'stalled': { background: 'black', text: 'white' },
   };
 
   public constructor(private visNetworkService: VisNetworkService) { }
@@ -174,16 +175,18 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
       }
     }
 
-    nodeinfo.childsNodes.sort((a, b) => this.getLabel(a).localeCompare(this.getLabel(b))).forEach(element => {
-      this.recursiveBuildNetwork(element, group);
-      const edge: SherlockEdge = {
-        from: nodeinfo.id,
-        to: element.id,
-        color: { color: 'darkgray' },
-        dashes: true
-      };
-      this.visNetworkData.edges.add(edge);
-    });
+    if (nodeinfo.childsNodes) {
+      nodeinfo.childsNodes.sort((a, b) => this.getLabel(a).localeCompare(this.getLabel(b))).forEach(element => {
+        this.recursiveBuildNetwork(element, group);
+        const edge: SherlockEdge = {
+          from: nodeinfo.id,
+          to: element.id,
+          color: { color: 'darkgray' },
+          dashes: true
+        };
+        this.visNetworkData.edges.add(edge);
+      });
+    }
   }
 
   private getLabel(node: ISherlockNode): string {
@@ -208,6 +211,10 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
 
     if (node.internalState['kernel::status'] === 'Stopped') {
       group = 'errors';
+    }
+
+    if (node.internalState['kernel::status'] === 'Stalled') {
+      group = 'stalled';
     }
 
     const groupSettings = this.colors[group] || { background: 'green', text: 'white' };
