@@ -32,7 +32,7 @@ namespace Sherlock.Services
 
         public ITrackedState Add(string key, string value)
         {
-            this.Status[key] = value;
+            this.InternalState[key] = value;
             return this;
         }
 

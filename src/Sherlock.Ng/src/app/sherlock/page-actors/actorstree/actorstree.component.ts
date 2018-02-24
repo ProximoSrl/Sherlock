@@ -163,7 +163,7 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
         widthConstraint: { minimum: 40 },
       };
 
-      group = nodeinfo.status['kernel::group'] || group;
+      group = nodeinfo.internalState['kernel::group'] || group;
 
       this.setColor(newNode, nodeinfo, group);
       this.visNetworkData.nodes.add(newNode);
@@ -187,7 +187,7 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   private getLabel(node: ISherlockNode): string {
-    const name = node.status['kernel::name'];
+    const name = node.internalState['kernel::name'];
 
     if (name) {
       return name;
@@ -206,7 +206,7 @@ export class ActorstreeComponent implements OnInit, OnDestroy, OnChanges {
       group = 'warnings';
     }
 
-    if (node.status['kernel::status'] === 'Stopped') {
+    if (node.internalState['kernel::status'] === 'Stopped') {
       group = 'errors';
     }
 

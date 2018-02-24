@@ -71,9 +71,9 @@ namespace Sherlock.Engine.Data
                 ActorId = "demoapp/demo"
             };
 
-            inspectionReport.Status.Add("kernel::name", "Name");
-            inspectionReport.Status.Add("kernel::actorType", "ActorType");
-            inspectionReport.Status.Add("kernel::status", "Started");
+            inspectionReport.InternalState.Add("kernel::name", "Name");
+            inspectionReport.InternalState.Add("kernel::actorType", "ActorType");
+            inspectionReport.InternalState.Add("kernel::status", "Started");
 
             report.Reports.Add("root", inspectionReport);
 

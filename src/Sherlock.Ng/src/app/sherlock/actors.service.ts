@@ -47,7 +47,7 @@ export interface ISherlockNode {
   id: string;
   parent: ISherlockLink;
   childsLinks: ISherlockLink[];
-  status: { [key: string]: string };
+  internalState: { [key: string]: string };
   childsNodes: ISherlockNode[];
   trackedMessages: ISherlockMessage[];
   timestamp: string;

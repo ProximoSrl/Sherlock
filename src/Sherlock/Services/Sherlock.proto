@@ -68,7 +68,7 @@ message TrackedState
 {
 	string actor_id = 1;
 	int64  millis_from_epoch = 2;
-	map<string, string> status = 3;
+	map<string, string> internal_state = 3;
 	repeated string childs = 4;
 	repeated string warnings = 5;
 }

@@ -41,23 +41,24 @@ namespace Sherlock.Services {
             "CgxNZXNzYWdlRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4",
             "ASIrCglEaXJlY3Rpb24SDQoJVW5kZWZpbmVkEAASBgoCSW4QARIHCgNPdXQQ",
             "AiI7Cg1NZXNzYWdlc0JhdGNoEioKCG1lc3NhZ2VzGAEgAygLMhguU2hlcmxv",
-            "Y2suVHJhY2tlZE1lc3NhZ2UiFwoVVHJhY2tNZXNzYWdlc1Jlc3BvbnNlIsAB",
+            "Y2suVHJhY2tlZE1lc3NhZ2UiFwoVVHJhY2tNZXNzYWdlc1Jlc3BvbnNlItYB",
             "CgxUcmFja2VkU3RhdGUSEAoIYWN0b3JfaWQYASABKAkSGQoRbWlsbGlzX2Zy",
-            "b21fZXBvY2gYAiABKAMSMgoGc3RhdHVzGAMgAygLMiIuU2hlcmxvY2suVHJh",
-            "Y2tlZFN0YXRlLlN0YXR1c0VudHJ5Eg4KBmNoaWxkcxgEIAMoCRIQCgh3YXJu",
-            "aW5ncxgFIAMoCRotCgtTdGF0dXNFbnRyeRILCgNrZXkYASABKAkSDQoFdmFs",
-            "dWUYAiABKAk6AjgBIhQKElRyYWNrU3RhdGVSZXNwb25zZSKSAQoPVHJhY2tl",
-            "ZFN0YXRlTWFwEjcKB3JlcG9ydHMYASADKAsyJi5TaGVybG9jay5UcmFja2Vk",
-            "U3RhdGVNYXAuUmVwb3J0c0VudHJ5GkYKDFJlcG9ydHNFbnRyeRILCgNrZXkY",
-            "ASABKAkSJQoFdmFsdWUYAiABKAsyFi5TaGVybG9jay5UcmFja2VkU3RhdGU6",
-            "AjgBIg4KDENsZWFyUmVxdWVzdCIPCg1DbGVhclJlc3BvbnNlMp4CCg9TaGVy",
-            "bG9ja1NlcnZpY2USOAoFQ2xlYXISFi5TaGVybG9jay5DbGVhclJlcXVlc3Qa",
-            "Fy5TaGVybG9jay5DbGVhclJlc3BvbnNlEj4KCVRyYWNrTG9ncxISLlNoZXJs",
-            "b2NrLkxvZ0JhdGNoGhsuU2hlcmxvY2suVHJhY2tMb2dzUmVzcG9uc2UoARJL",
-            "Cg1UcmFja01lc3NhZ2VzEhcuU2hlcmxvY2suTWVzc2FnZXNCYXRjaBofLlNo",
-            "ZXJsb2NrLlRyYWNrTWVzc2FnZXNSZXNwb25zZSgBEkQKClRyYWNrU3RhdGUS",
-            "Fi5TaGVybG9jay5UcmFja2VkU3RhdGUaHC5TaGVybG9jay5UcmFja1N0YXRl",
-            "UmVzcG9uc2UoAUIUqgIRU2hlcmxvY2suU2VydmljZXNiBnByb3RvMw=="));
+            "b21fZXBvY2gYAiABKAMSQQoOaW50ZXJuYWxfc3RhdGUYAyADKAsyKS5TaGVy",
+            "bG9jay5UcmFja2VkU3RhdGUuSW50ZXJuYWxTdGF0ZUVudHJ5Eg4KBmNoaWxk",
+            "cxgEIAMoCRIQCgh3YXJuaW5ncxgFIAMoCRo0ChJJbnRlcm5hbFN0YXRlRW50",
+            "cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJOgI4ASIUChJUcmFja1N0",
+            "YXRlUmVzcG9uc2UikgEKD1RyYWNrZWRTdGF0ZU1hcBI3CgdyZXBvcnRzGAEg",
+            "AygLMiYuU2hlcmxvY2suVHJhY2tlZFN0YXRlTWFwLlJlcG9ydHNFbnRyeRpG",
+            "CgxSZXBvcnRzRW50cnkSCwoDa2V5GAEgASgJEiUKBXZhbHVlGAIgASgLMhYu",
+            "U2hlcmxvY2suVHJhY2tlZFN0YXRlOgI4ASIOCgxDbGVhclJlcXVlc3QiDwoN",
+            "Q2xlYXJSZXNwb25zZTKeAgoPU2hlcmxvY2tTZXJ2aWNlEjgKBUNsZWFyEhYu",
+            "U2hlcmxvY2suQ2xlYXJSZXF1ZXN0GhcuU2hlcmxvY2suQ2xlYXJSZXNwb25z",
+            "ZRI+CglUcmFja0xvZ3MSEi5TaGVybG9jay5Mb2dCYXRjaBobLlNoZXJsb2Nr",
+            "LlRyYWNrTG9nc1Jlc3BvbnNlKAESSwoNVHJhY2tNZXNzYWdlcxIXLlNoZXJs",
+            "b2NrLk1lc3NhZ2VzQmF0Y2gaHy5TaGVybG9jay5UcmFja01lc3NhZ2VzUmVz",
+            "cG9uc2UoARJECgpUcmFja1N0YXRlEhYuU2hlcmxvY2suVHJhY2tlZFN0YXRl",
+            "GhwuU2hlcmxvY2suVHJhY2tTdGF0ZVJlc3BvbnNlKAFCFKoCEVNoZXJsb2Nr",
+            "LlNlcnZpY2VzYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -67,7 +68,7 @@ namespace Sherlock.Services {
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedMessage), global::Sherlock.Services.TrackedMessage.Parser, new[]{ "Sequence", "MillisFromEpoch", "Sender", "Target", "Direction", "Message", "ActorId" }, null, new[]{ typeof(global::Sherlock.Services.TrackedMessage.Types.Direction) }, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.MessagesBatch), global::Sherlock.Services.MessagesBatch.Parser, new[]{ "Messages" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackMessagesResponse), global::Sherlock.Services.TrackMessagesResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedState), global::Sherlock.Services.TrackedState.Parser, new[]{ "ActorId", "MillisFromEpoch", "Status", "Childs", "Warnings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedState), global::Sherlock.Services.TrackedState.Parser, new[]{ "ActorId", "MillisFromEpoch", "InternalState", "Childs", "Warnings" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackStateResponse), global::Sherlock.Services.TrackStateResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.TrackedStateMap), global::Sherlock.Services.TrackedStateMap.Parser, new[]{ "Reports" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Sherlock.Services.ClearRequest), global::Sherlock.Services.ClearRequest.Parser, null, null, null, null),
@@ -1182,7 +1183,7 @@ namespace Sherlock.Services {
     public TrackedState(TrackedState other) : this() {
       actorId_ = other.actorId_;
       millisFromEpoch_ = other.millisFromEpoch_;
-      status_ = other.status_.Clone();
+      internalState_ = other.internalState_.Clone();
       childs_ = other.childs_.Clone();
       warnings_ = other.warnings_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1215,14 +1216,14 @@ namespace Sherlock.Services {
       }
     }
 
-    /// <summary>Field number for the "status" field.</summary>
-    public const int StatusFieldNumber = 3;
-    private static readonly pbc::MapField<string, string>.Codec _map_status_codec
+    /// <summary>Field number for the "internal_state" field.</summary>
+    public const int InternalStateFieldNumber = 3;
+    private static readonly pbc::MapField<string, string>.Codec _map_internalState_codec
         = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForString(18), 26);
-    private readonly pbc::MapField<string, string> status_ = new pbc::MapField<string, string>();
+    private readonly pbc::MapField<string, string> internalState_ = new pbc::MapField<string, string>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::MapField<string, string> Status {
-      get { return status_; }
+    public pbc::MapField<string, string> InternalState {
+      get { return internalState_; }
     }
 
     /// <summary>Field number for the "childs" field.</summary>
@@ -1260,7 +1261,7 @@ namespace Sherlock.Services {
       }
       if (ActorId != other.ActorId) return false;
       if (MillisFromEpoch != other.MillisFromEpoch) return false;
-      if (!Status.Equals(other.Status)) return false;
+      if (!InternalState.Equals(other.InternalState)) return false;
       if(!childs_.Equals(other.childs_)) return false;
       if(!warnings_.Equals(other.warnings_)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1271,7 +1272,7 @@ namespace Sherlock.Services {
       int hash = 1;
       if (ActorId.Length != 0) hash ^= ActorId.GetHashCode();
       if (MillisFromEpoch != 0L) hash ^= MillisFromEpoch.GetHashCode();
-      hash ^= Status.GetHashCode();
+      hash ^= InternalState.GetHashCode();
       hash ^= childs_.GetHashCode();
       hash ^= warnings_.GetHashCode();
       if (_unknownFields != null) {
@@ -1295,7 +1296,7 @@ namespace Sherlock.Services {
         output.WriteRawTag(16);
         output.WriteInt64(MillisFromEpoch);
       }
-      status_.WriteTo(output, _map_status_codec);
+      internalState_.WriteTo(output, _map_internalState_codec);
       childs_.WriteTo(output, _repeated_childs_codec);
       warnings_.WriteTo(output, _repeated_warnings_codec);
       if (_unknownFields != null) {
@@ -1312,7 +1313,7 @@ namespace Sherlock.Services {
       if (MillisFromEpoch != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(MillisFromEpoch);
       }
-      size += status_.CalculateSize(_map_status_codec);
+      size += internalState_.CalculateSize(_map_internalState_codec);
       size += childs_.CalculateSize(_repeated_childs_codec);
       size += warnings_.CalculateSize(_repeated_warnings_codec);
       if (_unknownFields != null) {
@@ -1332,7 +1333,7 @@ namespace Sherlock.Services {
       if (other.MillisFromEpoch != 0L) {
         MillisFromEpoch = other.MillisFromEpoch;
       }
-      status_.Add(other.status_);
+      internalState_.Add(other.internalState_);
       childs_.Add(other.childs_);
       warnings_.Add(other.warnings_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -1355,7 +1356,7 @@ namespace Sherlock.Services {
             break;
           }
           case 26: {
-            status_.AddEntriesFrom(input, _map_status_codec);
+            internalState_.AddEntriesFrom(input, _map_internalState_codec);
             break;
           }
           case 34: {

@@ -15,7 +15,7 @@ namespace Sherlock.Host.Models
         public NavigationLink Parent { get; set; }
         public NavigationLink[] ChildsLinks { get; set; }
 
-        public IDictionary<string, string> Status { get; private set; }
+        public IDictionary<string, string> InternalState { get; private set; }
         public IList<IDictionary<string, string>> TrackedMessages { get; private set; }
         public IList<string> Warnings { get; private set; }
         public IEnumerable<Node> ChildsNodes { get; private set; }
@@ -25,7 +25,7 @@ namespace Sherlock.Host.Models
         public Node(string id, bool recursive)
         {
             Id = id;
-            Status = new Dictionary<string, string>();
+            InternalState = new Dictionary<string, string>();
             TrackedMessages = new List<IDictionary<string, string>>();
             Timestamp = DateTime.Now;
             this.Warnings = new string[0];
@@ -40,9 +40,9 @@ namespace Sherlock.Host.Models
         {
             Timestamp = UnixEpoch.AddMilliseconds(report.MillisFromEpoch).ToLocalTime();
 
-            foreach (var keyValuePair in report.Status)
+            foreach (var keyValuePair in report.InternalState)
             {
-                this.Status[keyValuePair.Key] = keyValuePair.Value;
+                this.InternalState[keyValuePair.Key] = keyValuePair.Value;
             }
 
             this.Warnings = report.Warnings.ToList();

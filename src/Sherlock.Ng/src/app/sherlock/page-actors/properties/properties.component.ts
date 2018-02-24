@@ -24,10 +24,10 @@ export class PropertiesComponent implements OnInit, OnChanges {
     }
 
     this.properties = {};
-    for (const i in this.node.status) {
-      if (this.node.status.hasOwnProperty(i)) {
+    for (const i in this.node.internalState) {
+      if (this.node.internalState.hasOwnProperty(i)) {
         if (!i.startsWith('kernel::')) {
-          this.properties[i] = this.node.status[i];
+          this.properties[i] = this.node.internalState[i];
         }
       }
     }

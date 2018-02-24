@@ -24,11 +24,11 @@ export class HeaderComponent implements OnInit, OnChanges {
     }
 
     this.kernel = <IKernelData>{};
-    for (const i in this.node.status) {
-      if (this.node.status.hasOwnProperty(i)) {
+    for (const i in this.node.internalState) {
+      if (this.node.internalState.hasOwnProperty(i)) {
         if (i.startsWith('kernel::')) {
           const propname = i.substr(8);
-          this.kernel[propname] = this.convertProperty(i, this.node.status[i]);
+          this.kernel[propname] = this.convertProperty(i, this.node.internalState[i]);
         }
       }
     }
