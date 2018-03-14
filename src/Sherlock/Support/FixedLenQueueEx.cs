@@ -19,7 +19,7 @@ namespace Sherlock.Support
 
         public void Add(T item)
         {
-            while (_queue.Count > _maxLen)
+            while (_queue.Count >= _maxLen)
             {
                 _queue.TryDequeue(out T discarded);
             }
