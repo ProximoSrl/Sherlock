@@ -1,13 +1,12 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Proto;
 using Serilog.Context;
 using Sherlock.ProtoActor.Messages;
 using Sherlock.Services;
-using Sherlock.Support;
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Sherlock.ProtoActor
 {
@@ -22,13 +21,34 @@ namespace Sherlock.ProtoActor
         private string __group;
         protected ILogger Logger { get; private set; }
         private Random _rnd;
-        protected AbstractActor()
+
+        protected virtual void ConfigureLogging(IContext context)
         {
-            Logger = Proto.Log.CreateLogger(GetType().FullName);
+            CreateLogger(context.Self.Id.Replace("/", "."));
+        }
+
+        private void CreateLogger(string name)
+        {
+            Logger = Proto.Log.CreateLogger(name);
         }
 
         public Task ReceiveAsync(IContext context)
         {
+            switch (context.Message)
+            {
+                case Started _:
+                {
+                    ConfigureLogging(context);
+                    break;
+                }
+
+                case Terminated t:
+                {
+                    Logger.LogWarning("Terminated {t}", t);
+                    break;
+                }
+            }
+
             using (LogContext.PushProperty("ActorId", context.Self.ToShortString()))
             {
                 return SherlockSettings.Enabled ?
@@ -88,7 +108,7 @@ namespace Sherlock.ProtoActor
                 }
                 else if (severity >= 50)
                 {
-                    foreach (var contextChild in context.Children.OrderBy(x=> _rnd.Next(10)).Take(5))
+                    foreach (var contextChild in context.Children.OrderBy(x => _rnd.Next(10)).Take(5))
                     {
                         contextChild.Tell(crash);
                     }
@@ -159,7 +179,7 @@ namespace Sherlock.ProtoActor
             }
 
             var report = TrackedState
-                .Create(context.Self.ToShortString(), context.Children.Select(x=>x.ToShortString()))
+                .Create(context.Self.ToShortString(), context.Children.Select(x => x.ToShortString()))
                 .Add("kernel::name", __name)
                 .Add("kernel::actorType", GetType().FullName)
                 .Add("kernel::status", __currentStatus)
